@@ -3,7 +3,6 @@ package br.com.app.fatec;
 import java.text.ParseException;
 
 import br.com.modelo.fatec.Agenda;
-import br.com.modelo.fatec.Pessoa;
 import br.com.negocio.fatec.AsciiArt;
 import br.com.negocio.fatec.Controle;
 import br.com.negocio.fatec.Menu;
@@ -28,6 +27,10 @@ public class App {
 				agenda.editarClientes();
 			case 5:
 				agenda.imprimirClientesPorGenero();
+			case 6:
+				agenda.calcularIdadeMedia();
+			case 7:
+				agenda.calcularIdadeMediaGenero();
 			default:
 				menu.imprimirMenu();
 			}

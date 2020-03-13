@@ -52,7 +52,7 @@ public class Pessoa implements Comparable<Pessoa>{
 	public void setTelefone(Telefone telefone) {
 		this.telefone = telefone;
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public int getIdade() {
 		GregorianCalendar agora = new GregorianCalendar();

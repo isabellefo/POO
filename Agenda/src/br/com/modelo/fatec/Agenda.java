@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class Agenda {
 	public List<Pessoa> pessoas = new ArrayList<Pessoa>();
@@ -31,7 +30,6 @@ public class Agenda {
         System.out.println("Insira o gênero do cliente('F' para Feminino e 'M' para Masculino): ");
         char genero = scanner.next().charAt(0);
         scanner.nextLine();
-       
 		
 		Pessoa c  = new Pessoa(nome, telefone, genero, data);
 		pessoas.add(c);
@@ -62,6 +60,38 @@ public class Agenda {
 		}
 	}
 	
+	public void calcularIdadeMedia() {
+		int counter = 0 ;
+		int idades = 0;
+		for (Pessoa pessoa : pessoas) {
+			idades += pessoa.getIdade();
+			counter++;
+		}
+		int media = idades/counter;
+		System.out.println("Idade média:" + media);
+	}
+	
+	public void calcularIdadeMediaGenero() {
+		int counterf = 0;
+		int idadesf = 0;
+		int counterm = 0;
+		int idadesm = 0;
+		for (Pessoa pessoa : pessoas) {
+			if(pessoa.getGenero() == 'F') {
+				idadesf += pessoa.getIdade();
+				counterf++;
+			}
+			
+			if(pessoa.getGenero() == 'M') {
+				idadesm += pessoa.getIdade();
+				counterm++;
+			}
+		}
+		int mediaf = idadesf/counterf;
+		int mediam = idadesm/counterm;
+		System.out.println("Idade média feminina:\n" + mediaf);
+		System.out.println("Idade média masculina:\n" + mediam);
+	}
 	
 	public void editarClientes() {
 		String nome = scanner.next();
