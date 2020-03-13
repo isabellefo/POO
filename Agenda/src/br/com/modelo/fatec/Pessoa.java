@@ -2,10 +2,9 @@ package br.com.modelo.fatec;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 
@@ -54,13 +53,52 @@ public class Pessoa implements Comparable<Pessoa>{
 		this.telefone = telefone;
 	}
 	
-	/*public int getIdade() {
-		LocalDate start = LocalDate.of();
-		int idade = Period.between(start,LocalDate.now()).getYears();
-		System.out.println(dataNascimento.getYear());
-		System.out.println("Idade dentro da função:" + idade);
-		return idade;
-	}*/
+	@SuppressWarnings("deprecation")
+	public int getIdade() {
+		GregorianCalendar agora = new GregorianCalendar();
+		
+		//Data atual
+ 		int ano = 0, 
+			mes = 0, dia = 0;
+ 		
+ 		//Data de nascimento
+ 		int anoNasc = 0, 
+ 				mesNasc = 0, diaNasc = 0;
+ 		
+ 		//Idade
+ 		int idade = 0;
+ 		
+ 		if(dataNascimento != null){
+ 	 		
+ 			ano = agora.get(Calendar.YEAR);
+ 	 		mes = agora.get(Calendar.MONTH) + 1;
+ 	 		dia = agora.get(Calendar.DAY_OF_MONTH);
+ 	 		
+ 	 		anoNasc = dataNascimento.getYear() + 1900;
+ 	 		mesNasc = dataNascimento.getMonth() + 1;
+ 	 		diaNasc = dataNascimento.getDay();
+ 	 		
+ 	 		idade = ano - anoNasc;
+ 	 		
+ 	 		// Calculando diferencas de mes e dia.
+ 	 		if(mes < mesNasc) {
+ 	 			idade--;
+ 	 		} else {
+ 	 			if(dia < diaNasc) {
+ 	 				idade--;
+ 	 			}
+ 	 		}
+ 	 		
+ 	 	// Ultimo teste, idade "negativa".
+ 	 		if(idade < 0) {
+ 	 			idade = 0;
+ 	 		}
+ 	 		
+ 		}
+ 		
+ 		return idade;
+ 		
+	}
 
 	public char getGenero() {
 		return genero;
@@ -84,6 +122,7 @@ public class Pessoa implements Comparable<Pessoa>{
 		String info = "Nome: "+ this.nome+"\n"+
 	"Telefone: " + telefone.getNumero() +"\n"+
 	"Data de Nascimento: "+f.format(dataNascimento) +"\n"+
+	"Idade: "+getIdade()+ "\n"+
 	"Gênero: " + genero + "\n";
 		return info;
 	}
