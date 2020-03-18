@@ -25,6 +25,8 @@ public class App {
 				agenda.imprimirClientes();
 			case 3:
 				agenda.editarClientes();
+			case 4:
+				agenda.excluirCliente();
 			case 5:
 				agenda.imprimirClientesPorGenero();
 			case 6:

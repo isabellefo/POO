@@ -35,7 +35,31 @@ public class Agenda {
 		pessoas.add(c);
 		System.out.println("Novo contato adicionado!");
 	}
+	
+	//Exlcuir cliente
+	public void excluirCliente() {
+		String nome;
+		System.out.println("Digite o nome que deseja excluir: ");
+		nome = scanner.next();
+		for (Pessoa pe : pessoas) {
+			if (pe.getNome().equals(nome)) {
+				pessoas.remove(pe);
+				System.out.println(pe.getNome() + " excluido com sucesso.\n");
+			}
+		}
+	}
+	
+	//Editar cadastro do cliente
+	public void editarClientes() {
+		String nome = scanner.next();
+		
+		for (Pessoa pessoa : pessoas) {
+			if(pessoa.getNome().equals(nome))
+				System.out.println("Existe");
+		}
+	}
 
+	//Imprimir os clientes
 	public void imprimirClientes() {
 		Collections.sort(pessoas);
 		for (Pessoa pessoa : pessoas) {
@@ -43,6 +67,7 @@ public class Agenda {
 		}
 	}
 	
+	//Imprimir clientes por gênero
 	public void imprimirClientesPorGenero() {
 		Collections.sort(pessoas);
 		System.out.println("Clientes do gênero feminino:");
@@ -60,6 +85,7 @@ public class Agenda {
 		}
 	}
 	
+	//Calcular idade média geral
 	public void calcularIdadeMedia() {
 		int counter = 0 ;
 		int idades = 0;
@@ -71,6 +97,8 @@ public class Agenda {
 		System.out.println("Idade média:" + media);
 	}
 	
+	
+	//Cálculo de iade média por gênero
 	public void calcularIdadeMediaGenero() {
 		int counterf = 0;
 		int idadesf = 0;
@@ -87,29 +115,25 @@ public class Agenda {
 				counterm++;
 			}
 		}
-		int mediaf = idadesf/counterf;
-		int mediam = idadesm/counterm;
+		int mediaf;
+		int mediam;		
+		
+		if(counterf == 0) {
+			mediaf = 0;
+		}else {
+			mediaf = idadesf/counterf;
+		}
+		
+		if(counterm == 0) {
+			mediam = 0;
+		}else {
+			mediam = idadesm/counterm;
+		}
 		System.out.println("Idade média feminina:\n" + mediaf);
 		System.out.println("Idade média masculina:\n" + mediam);
 	}
 	
-	public void editarClientes() {
-		String nome = scanner.next();
-		
-		for (Pessoa pessoa : pessoas) {
-			if(pessoa.getNome().equals(nome))
-				System.out.println("Existe");
-		}
-	}
 	
-	public void excluirClientes() {
-		String nome = scanner.next();
-		
-		for (Pessoa pessoa : pessoas) {
-			if(pessoa.getNome().equals(nome))
-				System.out.println("Existe");
-		}
-	}
 
 	
 }
