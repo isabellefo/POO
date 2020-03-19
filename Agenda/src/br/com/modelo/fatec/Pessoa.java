@@ -133,6 +133,7 @@ public class Pessoa implements Comparable<Pessoa>{
 		System.out.println("Digite o novo nome:");
 		String nome = scanner.nextLine();
 		this.setNome(nome);
+		System.out.println("Nome alterado!");
 	}
 	
 	public void alteraTelefone(){
@@ -140,6 +141,7 @@ public class Pessoa implements Comparable<Pessoa>{
 		String tel = scanner.nextLine();
 		Telefone telefone = new Telefone(tel);
 		this.setTelefone(telefone);
+		System.out.println("Telefone alterado!");
 	}
 	
 	public void alteraNascimento(){
@@ -153,6 +155,7 @@ public class Pessoa implements Comparable<Pessoa>{
 			e.printStackTrace();
 		}  
 		this.setDataNascimento(dataFormatada);
+		System.out.println("Data de nascimento alterado!");
 		
 	}
 	
@@ -161,14 +164,14 @@ public class Pessoa implements Comparable<Pessoa>{
         char genero = scanner.next().charAt(0);
         scanner.nextLine();
         this.setGenero(genero);
-		
+        System.out.println("Gênero alterado!");
 	}
 	
 	public void editaCliente(){
-		System.out.println("1- Mudar o nome.");
-		System.out.println("2- Mudar o telefone.");
-		System.out.println("3- Mudar a data de nascimento");
-		System.out.println("4- Mudar o gênero");
+		System.out.println("1 - Editar o nome.");
+		System.out.println("2 - Editar o telefone.");
+		System.out.println("3 - Editar a data de nascimento");
+		System.out.println("4 - Editar o gênero");
 		int executar = scanner.nextInt();
 		scanner.nextLine();/*Chamando o nextLine para evitar futuros erros de entrada devido o nextInt*/
 		switch(executar){

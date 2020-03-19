@@ -39,7 +39,7 @@ public class Agenda {
 	//Exlcuir cliente
 	public void excluirCliente() {
 		String nome;
-		System.out.println("Digite o nome que deseja excluir: ");
+		System.out.println("Digite o nome do cliente que deseja excluir: ");
 		nome = scanner.nextLine();
 		for (Pessoa pe : pessoas) {
 			if (pe.getNome().equals(nome)) {
@@ -51,9 +51,8 @@ public class Agenda {
 	
 	//Editar cadastro do cliente
 	public void editarClientes() {
-		System.out.println("Digite o nome do aluno que deseja alterar: ");
+		System.out.println("Digite o nome do cliente que deseja alterar: ");
 		String nome = scanner.nextLine();
-		
 		for (Pessoa pessoa : pessoas) {
 			if(pessoa.getNome().equals(nome))
 				pessoa.editaCliente();
