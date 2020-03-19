@@ -23,16 +23,22 @@ public class App {
 				break;
 			case 2:
 				agenda.imprimirClientes();
+				break;
 			case 3:
 				agenda.editarClientes();
+				break;
 			case 4:
 				agenda.excluirCliente();
+				break;
 			case 5:
 				agenda.imprimirClientesPorGenero();
+				break;
 			case 6:
 				agenda.calcularIdadeMedia();
+				break;
 			case 7:
 				agenda.calcularIdadeMediaGenero();
+				break;
 			default:
 				menu.imprimirMenu();
 			}

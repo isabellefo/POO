@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Scanner;
 
 
 
@@ -15,6 +16,7 @@ public class Pessoa implements Comparable<Pessoa>{
 	private Date dataNascimento;
 	
 	SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+	public Scanner scanner = new Scanner(System.in);
 	
 	public Pessoa(String nome, Telefone telefone, char genero, String dataNascimento) {
 		this.nome = nome;
@@ -126,4 +128,68 @@ public class Pessoa implements Comparable<Pessoa>{
 	"Gênero: " + genero + "\n";
 		return info;
 	}
+	
+	public void alteraNome(){
+		System.out.println("Digite o novo nome:");
+		String nome = scanner.nextLine();
+		this.setNome(nome);
+	}
+	
+	public void alteraTelefone(){
+		System.out.println("Digite o novo telefone:");
+		String tel = scanner.nextLine();
+		Telefone telefone = new Telefone(tel);
+		this.setTelefone(telefone);
+	}
+	
+	public void alteraNascimento(){
+		System.out.println("Insira a nova data de nascimento:");
+		String dataNova = scanner.nextLine(); 
+	    Date dataFormatada = null;
+		try {
+			dataFormatada = f.parse(dataNova);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+		this.setDataNascimento(dataFormatada);
+		
+	}
+	
+	public void alteraGenero(){
+		System.out.println("Digite o gênero novo('F' para Feminino e 'M' para Masculino): ");
+        char genero = scanner.next().charAt(0);
+        scanner.nextLine();
+        this.setGenero(genero);
+		
+	}
+	
+	public void editaCliente(){
+		System.out.println("1- Mudar o nome.");
+		System.out.println("2- Mudar o telefone.");
+		System.out.println("3- Mudar a data de nascimento");
+		System.out.println("4- Mudar o gênero");
+		int executar = scanner.nextInt();
+		scanner.nextLine();/*Chamando o nextLine para evitar futuros erros de entrada devido o nextInt*/
+		switch(executar){
+		case 1:
+			alteraNome();
+			break;
+		
+		case 2:
+			alteraTelefone();
+			break;
+		
+		case 3:
+			alteraNascimento();
+			break;
+		
+		case 4:
+			alteraGenero();
+			break;
+		
+		}
+		
+	}
+	
 }
