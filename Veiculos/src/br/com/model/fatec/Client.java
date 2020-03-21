@@ -6,11 +6,17 @@ public class Client {
 	private Address _address;
 	private String _cpf;
 	
+	private Vehicle _vehicle;
+	
 	public Client(String name, Phone phone, Address address, String cpf) {
 		_name = name;
 		_phone = phone;
 		_address = address;
 		_cpf = cpf;
+	}
+	
+	public void setName(String name) {
+		_name=name;
 	}
 	
 	public String getName() {
@@ -35,6 +41,19 @@ public class Client {
 	
 	public String getCpf() {
 		return _cpf;
+	}
+	
+	public void setCpf(String cpf) {
+		_cpf=cpf;
+	}
+	
+	public void setVehicle(Vehicle vehicle) {
+		_vehicle = vehicle;
+	}
+	
+	public Vehicle getVehicle() {
+		return _vehicle;
+		
 	}
 	
 }

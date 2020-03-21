@@ -19,6 +19,7 @@ public class Main {
 				optionControl.createClient();
 				break;
 			case 2:
+				optionControl.createVehicle();
 			case 3:
 			case 5:
 			case 6:
