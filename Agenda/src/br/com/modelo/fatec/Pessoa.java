@@ -55,6 +55,15 @@ public class Pessoa implements Comparable<Pessoa>{
 		this.telefone = telefone;
 	}
 
+
+	public char getGenero() {
+		return genero;
+	}
+	
+	public void setGenero(char genero) {
+		this.genero = genero;
+	}
+	
 	@SuppressWarnings("deprecation")
 	public int getIdade() {
 		GregorianCalendar agora = new GregorianCalendar();
@@ -102,15 +111,7 @@ public class Pessoa implements Comparable<Pessoa>{
  		
 	}
 
-	public char getGenero() {
-		return genero;
-	}
-	
-	public void setGenero(char genero) {
-		this.genero = genero;
-	}
-
-
+	//Sobrescrever o método compareTo para ordenar pelo nome
 	@Override
 	public int compareTo(Pessoa o) {
 		return this.nome.compareTo(o.nome);
@@ -168,13 +169,13 @@ public class Pessoa implements Comparable<Pessoa>{
 	}
 	
 	public void editaCliente(){
-		System.out.println("1 - Editar o nome.");
-		System.out.println("2 - Editar o telefone.");
-		System.out.println("3 - Editar a data de nascimento");
-		System.out.println("4 - Editar o gênero");
-		int executar = scanner.nextInt();
+		System.out.println("1- Editar o nome.");
+		System.out.println("2- Editar o telefone.");
+		System.out.println("3- Editar a data de nascimento");
+		System.out.println("4- Editar o gênero");
+		int opt = scanner.nextInt();
 		scanner.nextLine();/*Chamando o nextLine para evitar futuros erros de entrada devido o nextInt*/
-		switch(executar){
+		switch(opt){
 		case 1:
 			alteraNome();
 			break;
