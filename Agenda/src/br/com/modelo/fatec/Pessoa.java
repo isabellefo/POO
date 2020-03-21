@@ -69,12 +69,10 @@ public class Pessoa implements Comparable<Pessoa>{
 		GregorianCalendar agora = new GregorianCalendar();
 		
 		//Data atual
- 		int ano = 0, 
-			mes = 0, dia = 0;
+ 		int ano = 0, mes = 0, dia = 0;
  		
  		//Data de nascimento
- 		int anoNasc = 0, 
- 				mesNasc = 0, diaNasc = 0;
+ 		int anoNasc = 0, mesNasc = 0, diaNasc = 0;
  		
  		//Idade
  		int idade = 0;
