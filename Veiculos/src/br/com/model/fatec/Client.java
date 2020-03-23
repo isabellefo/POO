@@ -5,6 +5,7 @@ public class Client {
 	private Phone _phone;
 	private Address _address;
 	private String _cpf;
+	private int _idClient;
 	
 	private Vehicle _vehicle;
 	
@@ -54,6 +55,14 @@ public class Client {
 	public Vehicle getVehicle() {
 		return _vehicle;
 		
+	}
+	
+	public int getIdClient() {
+		return _idClient;
+	}
+	
+	public void setIdClient(int idClient) {
+		this._idClient = idClient;
 	}
 	
 }

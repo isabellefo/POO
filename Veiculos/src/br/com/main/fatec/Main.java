@@ -6,6 +6,7 @@ import br.com.model.fatec.Options;
 
 public class Main {
 
+	//Arrumar menu. Provisório para testes
 	public static void main(String[] args) {
 		Menu menu = new Menu();
 		Options optionControl = new Options();
@@ -20,10 +21,20 @@ public class Main {
 				break;
 			case 2:
 				optionControl.createVehicle();
+				break;
 			case 3:
+				optionControl.scheduleReview();
+				break;
+			case 4:
+				//PROVISÓRIO
+				optionControl.printSchedule();
+				break;
 			case 5:
+				optionControl.changeSchedule();
+				break;
 			case 6:
-			case 7:
+				optionControl.deleteSchedule();
+				break;
 			default:
 				menu.ShowMenu();
 			}
