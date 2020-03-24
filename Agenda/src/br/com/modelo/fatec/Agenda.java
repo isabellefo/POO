@@ -19,7 +19,7 @@ public class Agenda {
 		String nome = scanner.nextLine();
 		
 		// Dados de contato
-		System.out.println("Insira o telefone do cliente:");
+		System.out.println("Insira o telefone do cliente (9 dígitos):");
 		String tel = scanner.nextLine();
 		Telefone telefone = new Telefone(tel);
 		
@@ -243,8 +243,8 @@ public class Agenda {
 			}
 		}
 		
-		System.out.println("Produto/serviço mais consumido pelo publico feminino:" + this.produtos[maiorF]);
-		System.out.println("Produto/serviço mais consumido pelo publico masculino:" + this.produtos[maiorM]);
+		System.out.println("Produto/serviço mais consumido pelo publico feminino:" + this.produtos[posMaiorF]);
+		System.out.println("Produto/serviço mais consumido pelo publico masculino:" + this.produtos[posMaiorM]);
 	}
 	
 	public void imprimirRelatorios() {
