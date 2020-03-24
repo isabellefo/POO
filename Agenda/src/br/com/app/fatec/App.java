@@ -31,16 +31,11 @@ public class App {
 				agenda.excluirCliente();
 				break;
 			case 5:
-				agenda.imprimirClientesPorGenero();
+				agenda.comprar();;
 				break;
 			case 6:
-				agenda.comprar();
-				//agenda.calcularIdadeMedia();
-				break;
-			case 7:
 				agenda.imprimirRelatorios();
-				/*agenda.calcularIdadeMediaGenero();
-				break;*/
+				break;
 			default:
 				menu.imprimirMenu();
 			}

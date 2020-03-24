@@ -126,8 +126,7 @@ public class Pessoa implements Comparable<Pessoa>{
 	"Telefone: " + telefone.getNumero() +"\n"+
 	"Data de Nascimento: "+f.format(dataNascimento) +"\n"+
 	"Idade: "+getIdade()+ "\n"+
-	"Gênero: " + genero + "\n"+
-	"+~~~~~~~~~~~~~~~~~~~~~~~~~+" +"\n";
+	"Gênero: " + genero;
 		return info;
 	}
 	

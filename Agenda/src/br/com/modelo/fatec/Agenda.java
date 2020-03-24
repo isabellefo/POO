@@ -73,6 +73,11 @@ public class Agenda {
 		Collections.sort(pessoas);
 		for (Pessoa pessoa : pessoas) {
 			System.out.println(pessoa.toString());
+			System.out.println("PRODUTOS CONSUMIDOS");
+			for(int i = 0; i < 6; ++i) {
+				System.out.println("[" + i + "] "+ produtos[i] +" x"+ pessoa.getQtdProdutos(i));
+			}
+			System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
 		}
 	}
 	
@@ -146,7 +151,7 @@ public class Agenda {
 	//Produtos
 	public void comprar() {
 		int i;
-		System.out.println("\n PRODUTOS: ");
+		System.out.println("PRODUTOS: ");
 		for(i = 0; i < this.produtos.length; ++i) {
 			System.out.println("[" + i + "]" + produtos[i]);
 		}
@@ -164,7 +169,7 @@ public class Agenda {
 		for (Pessoa pessoa : pessoas) {
 			if (pessoa.getNome().equals(pe)) {
 				pessoa.setQtdProdutos(prod, qtd);
-				System.out.println("Item adicionado ao histório!\n");
+				System.out.println("Item adicionado ao histório!");
 			}
 		}
 		System.out.println("Deseja continuar comprando? ('S'/'N')");
@@ -176,24 +181,29 @@ public class Agenda {
 		 }
 	}
 	
+	//Determinar produto mais consumido pelo publico
 	public void determinarProdConsumido() {
 		int[] prod = new int[6];
 		int maior = 0;
+		int posMaior = 0;
 		for (Pessoa p : pessoas) {
 			for (int i = 0; i < prod.length; i++) {
 				prod[i] += p.getQtdProdutos(i);
 			}
 		}
 		
-		for(int i = 1; i < prod.length; ++i) {
-			if(prod[i] > maior)
-				maior = i;
+		for(int i = 0; i < prod.length; ++i) {
+			if(prod[i] > maior) {
+				maior = prod[i];
+				posMaior = i;
+			}
 		}
 		
-		System.out.println("Produto/serviço mais consumido:" + this.produtos[maior]);
+		System.out.println("Produto/serviço mais consumido:" + this.produtos[posMaior]);
 		
 	}
 	
+	//Determinar produto mais consumido por genero
 	public void determinarProdConsumidoGenero() {
 		int[] prodF = new int[6];
 		int[] prodM = new int[6];
