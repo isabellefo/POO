@@ -15,6 +15,8 @@ public class Pessoa implements Comparable<Pessoa>{
 	private char genero;
 	private Date dataNascimento;
 	
+	private int[] qtdProdutos = new int[6];
+	
 	SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
 	public Scanner scanner = new Scanner(System.in);
 	
@@ -192,6 +194,16 @@ public class Pessoa implements Comparable<Pessoa>{
 		
 		}
 		
+	}
+	
+	public void setQtdProdutos(int i, int qtd) {
+		this.qtdProdutos[i] = qtd;
+	}
+	
+	public void getQtdProdutos() {
+		for(int i = 0; i < qtdProdutos.length; ++i) {
+			System.out.println("[" + i + "]" + qtdProdutos[i]);
+		}
 	}
 	
 }

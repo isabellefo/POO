@@ -9,6 +9,7 @@ import java.text.ParseException;
 public class Agenda {
 	public List<Pessoa> pessoas = new ArrayList<Pessoa>();
 	public Scanner scanner = new Scanner(System.in);
+	private String[] produtos = {"Corte de cabelo","Pintura de cabelo","Manicure","Pedicure","Corte de barba","Shampoo Antiqueda"};
 	
 	
 	public void cadastrarPessoa() throws ParseException{
@@ -23,11 +24,11 @@ public class Agenda {
 		Telefone telefone = new Telefone(tel);
 		
 		// Dados de nascimento
-		System.out.println("Insira a data de nascimento do cliente:");
+		System.out.println("Insira a data de nascimento do cliente (dd/mm/aaaa):");
 		String data = scanner.nextLine();
         
         //Genero
-        System.out.println("Insira o gênero do cliente('F' para Feminino e 'M' para Masculino): ");
+        System.out.println("Insira o gênero do cliente('F'/'M'): ");
         char genero = scanner.next().charAt(0);
         scanner.nextLine();
 		
@@ -36,9 +37,16 @@ public class Agenda {
 		System.out.println("Novo contato adicionado!");
 	}
 	
+	public void imprimirNomeCliente() {
+		for (Pessoa pessoa : pessoas) {
+			System.out.println("NOME:" + pessoa.getNome());
+		}
+	}
+	
 	//Exlcuir cliente
 	public void excluirCliente() {
 		String nome;
+		imprimirNomeCliente();
 		System.out.println("Digite o nome do cliente que deseja excluir: ");
 		nome = scanner.nextLine();
 		for (Pessoa pe : pessoas) {
@@ -134,7 +142,41 @@ public class Agenda {
 	}
 	
 	
-
+	//Produtos
+	public void comprar() {
+		int i;
+		System.out.println("\n PRODUTOS: ");
+		for(i = 0; i < this.produtos.length; ++i) {
+			System.out.println("[" + i + "]" + produtos[i]);
+		}
+		
+		System.out.println("+~~~~~~~~~~~~~~~~~~~~~~~~~+");
+		System.out.println("Selecione o produto que deseja comprar (pelo id):");
+		int prod = Integer.parseInt(scanner.nextLine());
+		System.out.println("Insira a quantidade:");
+		int qtd = Integer.parseInt(scanner.nextLine());
+		
+		imprimirNomeCliente();
+		System.out.println("Selecione o cliente que deseja adicionar o item na lista:");
+		String pe = scanner.nextLine();
+		
+		for (Pessoa pessoa : pessoas) {
+			if (pessoa.getNome().equals(pe)) {
+				pessoa.setQtdProdutos(prod, qtd);
+				System.out.println("Item adicionado ao histório!\n");
+				
+				pessoa.getQtdProdutos();
+			}
+		}
+		/*System.out.println("Deseja continuar comprando? ('S'/'N')");
+		 char op = scanner.next().charAt(0);
+		 if(op == 'S') {
+			 comprar();
+		 }else {
+			 System.out.println("Operação finalizada");
+		 }*/
+	}
+	
 	
 }
 

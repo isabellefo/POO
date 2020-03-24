@@ -34,11 +34,12 @@ public class App {
 				agenda.imprimirClientesPorGenero();
 				break;
 			case 6:
-				agenda.calcularIdadeMedia();
+				agenda.comprar();
+				//agenda.calcularIdadeMedia();
 				break;
 			case 7:
-				agenda.calcularIdadeMediaGenero();
-				break;
+				/*agenda.calcularIdadeMediaGenero();
+				break;*/
 			default:
 				menu.imprimirMenu();
 			}
