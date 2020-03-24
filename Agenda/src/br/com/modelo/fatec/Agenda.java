@@ -60,6 +60,7 @@ public class Agenda {
 	
 	//Editar cadastro do cliente
 	public void editarClientes() {
+		imprimirNomeCliente();
 		System.out.println("Digite o nome do cliente que deseja alterar: ");
 		String nome = scanner.nextLine();
 		for (Pessoa pessoa : pessoas) {
