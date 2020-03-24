@@ -88,6 +88,11 @@ public class Agenda {
 		for (Pessoa pessoa : pessoas) {
 			if(pessoa.getGenero() == 'F') {
 				System.out.println(pessoa.toString());
+				System.out.println("PRODUTOS CONSUMIDOS");
+				for(int i = 0; i < 6; ++i) {
+					System.out.println("[" + i + "] "+ produtos[i] +" x"+ pessoa.getQtdProdutos(i));
+				}
+				System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
 			} 
 		}
 		
@@ -95,6 +100,11 @@ public class Agenda {
 		for (Pessoa pessoa : pessoas) {
 			if(pessoa.getGenero() == 'M') {
 				System.out.println(pessoa.toString());
+				System.out.println("PRODUTOS CONSUMIDOS");
+				for(int i = 0; i < 6; ++i) {
+					System.out.println("[" + i + "] "+ produtos[i] +" x"+ pessoa.getQtdProdutos(i));
+				}
+				System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
 			} 
 		}
 	}
