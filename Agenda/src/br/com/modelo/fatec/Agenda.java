@@ -219,6 +219,8 @@ public class Agenda {
 		int[] prodM = new int[6];
 		int maiorF = 0;
 		int maiorM = 0;
+		int posMaiorF = 0;
+		int posMaiorM = 0;
 		for (Pessoa p : pessoas) {
 			for (int i = 0; i < prodM.length; i++) {
 				if(p.getGenero() == 'F') {
@@ -231,11 +233,13 @@ public class Agenda {
 		
 		for(int i = 1; i < prodF.length; ++i) {
 			if(prodF[i] > maiorF) {
-				maiorF = i;
+				maiorF = prodF[i];
+				posMaiorF = i;
 			}
 				
 			if(prodM[i] > maiorM) {
-				maiorM = i;
+				maiorM = prodM[i];
+				posMaiorM = i;
 			}
 		}
 		
