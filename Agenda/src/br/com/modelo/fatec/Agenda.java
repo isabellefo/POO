@@ -37,6 +37,7 @@ public class Agenda {
 		System.out.println("Novo contato adicionado!");
 	}
 	
+	//Imprimir lista de nomes dos clientes
 	public void imprimirNomeCliente() {
 		for (Pessoa pessoa : pessoas) {
 			System.out.println("NOME:" + pessoa.getNome());
@@ -164,17 +165,15 @@ public class Agenda {
 			if (pessoa.getNome().equals(pe)) {
 				pessoa.setQtdProdutos(prod, qtd);
 				System.out.println("Item adicionado ao histório!\n");
-				
-				pessoa.getQtdProdutos();
 			}
 		}
-		/*System.out.println("Deseja continuar comprando? ('S'/'N')");
-		 char op = scanner.next().charAt(0);
+		System.out.println("Deseja continuar comprando? ('S'/'N')");
+		 char op = scanner.nextLine().charAt(0);
 		 if(op == 'S') {
 			 comprar();
 		 }else {
 			 System.out.println("Operação finalizada");
-		 }*/
+		 }
 	}
 	
 	
