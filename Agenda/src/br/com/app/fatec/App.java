@@ -38,6 +38,7 @@ public class App {
 				//agenda.calcularIdadeMedia();
 				break;
 			case 7:
+				agenda.imprimirRelatorios();
 				/*agenda.calcularIdadeMediaGenero();
 				break;*/
 			default:

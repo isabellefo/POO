@@ -126,7 +126,8 @@ public class Pessoa implements Comparable<Pessoa>{
 	"Telefone: " + telefone.getNumero() +"\n"+
 	"Data de Nascimento: "+f.format(dataNascimento) +"\n"+
 	"Idade: "+getIdade()+ "\n"+
-	"Gênero: " + genero + "\n";
+	"Gênero: " + genero + "\n"+
+	"+~~~~~~~~~~~~~~~~~~~~~~~~~+" +"\n";
 		return info;
 	}
 	
@@ -200,10 +201,8 @@ public class Pessoa implements Comparable<Pessoa>{
 		this.qtdProdutos[i] = qtd;
 	}
 	
-	public void getQtdProdutos() {
-		for(int i = 0; i < qtdProdutos.length; ++i) {
-			System.out.println("[" + i + "]" + qtdProdutos[i]);
-		}
+	public int getQtdProdutos(int i) {
+		return qtdProdutos[i];
 	}
 	
 }

@@ -138,8 +138,8 @@ public class Agenda {
 		}else {
 			mediam = idadesm/counterm;
 		}
-		System.out.println("Idade média feminina:\n" + mediaf);
-		System.out.println("Idade média masculina:\n" + mediam);
+		System.out.println("Idade média feminina: " + mediaf);
+		System.out.println("Idade média masculina: " + mediam);
 	}
 	
 	
@@ -176,6 +176,59 @@ public class Agenda {
 		 }
 	}
 	
+	public void determinarProdConsumido() {
+		int[] prod = new int[6];
+		int maior = 0;
+		for (Pessoa p : pessoas) {
+			for (int i = 0; i < prod.length; i++) {
+				prod[i] += p.getQtdProdutos(i);
+			}
+		}
+		
+		for(int i = 1; i < prod.length; ++i) {
+			if(prod[i] > maior)
+				maior = i;
+		}
+		
+		System.out.println("Produto/serviço mais consumido:" + this.produtos[maior]);
+		
+	}
+	
+	public void determinarProdConsumidoGenero() {
+		int[] prodF = new int[6];
+		int[] prodM = new int[6];
+		int maiorF = 0;
+		int maiorM = 0;
+		for (Pessoa p : pessoas) {
+			for (int i = 0; i < prodM.length; i++) {
+				if(p.getGenero() == 'F') {
+					prodF[i] += p.getQtdProdutos(i);
+				}else {
+					prodM[i] += p.getQtdProdutos(i);
+				}
+			}
+		}
+		
+		for(int i = 1; i < prodF.length; ++i) {
+			if(prodF[i] > maiorF) {
+				maiorF = i;
+			}
+				
+			if(prodM[i] > maiorM) {
+				maiorM = i;
+			}
+		}
+		
+		System.out.println("Produto/serviço mais consumido pelo publico feminino:" + this.produtos[maiorF]);
+		System.out.println("Produto/serviço mais consumido pelo publico masculino:" + this.produtos[maiorM]);
+	}
+	
+	public void imprimirRelatorios() {
+		calcularIdadeMedia();
+		calcularIdadeMediaGenero();
+		determinarProdConsumido();
+		determinarProdConsumidoGenero();
+	}
 	
 }
 
