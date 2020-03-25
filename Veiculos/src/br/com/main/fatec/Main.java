@@ -23,9 +23,12 @@ public class Main {
 				optionControl.createVehicle();
 				break;
 			case 3:
-				optionControl.scheduleReview();
+				optionControl.createService();
 				break;
 			case 4:
+				optionControl.scheduleReview();
+				break;
+			case 7:
 				//PROVISÓRIO
 				optionControl.printSchedule();
 				break;
