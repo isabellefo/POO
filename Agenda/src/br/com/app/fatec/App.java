@@ -9,7 +9,7 @@ import br.com.negocio.fatec.Menu;
 
 public class App {
 	public static void main(String[] args) throws ParseException{
-		AsciiArt.printAsciiArt("Agenda");
+		//AsciiArt.printAsciiArt("Agenda");
 		Menu menu = new Menu();
 		Agenda agenda = new Agenda();
 		int op = 1000;
