@@ -10,9 +10,11 @@ import java.util.Scanner;
 public class Options {
 	public List<Client> clients = new ArrayList<Client>();
 	public List<Schedule> schedules = new ArrayList<Schedule>();
+	public List<Service> services = new ArrayList<Service>();
 	SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
 	public Scanner scanner = new Scanner(System.in);
 	int idS = 0;
+	int idService = 0;
 	int idC = 0;
 	public void createClient(){
 		//Nome
@@ -41,7 +43,6 @@ public class Options {
         //CPF	
         System.out.println("Insira o CPF do cliente");
         String cpf = scanner.nextLine();
-        scanner.nextLine();
 		
 		Client c  = new Client(name, phone, address, cpf);
 		c.setIdClient(idC);
@@ -53,37 +54,53 @@ public class Options {
 	
 	public void createVehicle() {
 	
-	//Número da placa
-	System.out.println("Insira a placa do carro:");
-	String plate = scanner.nextLine();
+		//Número da placa
+		System.out.println("Insira a placa do carro:");
+		String plate = scanner.nextLine();
 	
-	//Modelo
-	System.out.println("Insira o modelo do carro:");
-	String version = scanner.nextLine();
+		//Modelo
+		System.out.println("Insira o modelo do carro:");
+		String version = scanner.nextLine();
 	
-	//Ano de fabricação
-	System.out.println("Insira o ano de fabricação:");
-	int year = Integer.parseInt(scanner.nextLine());
-	
-	//Valor de compra
-	System.out.println("Insira o valor de compra:");
-	double value = Double.parseDouble(scanner.nextLine());
+		//Ano de fabricação
+		System.out.println("Insira o ano de fabricação:");
+		int year = Integer.parseInt(scanner.nextLine());
 		
-	Vehicle v = new Vehicle(plate, version, year, value);
-	
-	System.out.println("Selecione o dono do veículo (pelo id): ");
-	for (Client cli : clients) {
-		System.out.println("[ "+cli.getIdClient()+" ] - " +"NOME: " +cli.getName() + "\n" +
-		"CPF: " + cli.getCpf());
-	}
-	
-	int idCli = Integer.parseInt(scanner.nextLine());
-	for (Client cli : clients) {
-		if(cli.getIdClient() == idCli) {
-			cli.setVehicle(v);
+		//Valor de compra
+		System.out.println("Insira o valor de compra:");
+		double value = Double.parseDouble(scanner.nextLine());
+			
+		Vehicle v = new Vehicle(plate, version, year, value);
+		
+		System.out.println("Selecione o dono do veículo (pelo id): ");
+		for (Client cli : clients) {
+			if(cli.getVehicle() == null) {
+				System.out.println("[ "+cli.getIdClient()+" ] - " +"NOME: " +cli.getName() + "\n" +
+				"CPF: " + cli.getCpf());
+			}
 		}
+		
+		int idCli = Integer.parseInt(scanner.nextLine());
+		for (Client cli : clients) {
+			if(cli.getIdClient() == idCli) {
+				cli.setVehicle(v);
+			}
+		}
+		
+		System.out.println("Novo veiculo adicionado!");
+	
+		
 	}
 	
+	public void createService(){
+		//Nome
+		System.out.println("Insira a descrição do serviço:");
+		String description = scanner.nextLine();
+		
+		Service s = new Service(idService, description);
+		idService++;
+		services.add(s);
+		System.out.println("Novo serviço adicionado!");
 		
 	}
 	
@@ -94,35 +111,55 @@ public class Options {
 		//Data
 		System.out.println("Insira a data da revisão:");
 		String data = scanner.nextLine();
-		//Serviço
-		System.out.println("Insira qual serviço será feito na revisão:");
-		String service = scanner.nextLine();
 		
-		//Cliente
-		System.out.println("Digite o nome do cliente que deseja fazer agendar uma revisão: ");
-		String cl = scanner.nextLine();
-		Client cls = null;
-		for (Client cli : clients) {
-			if(cli.getName().equals(cl)) {
-				cls = cli;
-			}else {
-				System.out.println("Cliente não encontrado");
+		//Serviço
+		System.out.println("Selecione o serviço (pelo id): ");
+		for (Service service : services) {
+			System.out.println("[ "+service.getId()+" ] - " +"DESCRIÇÃO: " +service.getDescription());
+		}
+		
+		String descriptionService = "";
+		int idSer = Integer.parseInt(scanner.nextLine());
+		for (Service service : services) {
+			if(service.getId() == idSer) {
+				descriptionService = service.getDescription();
 			}
 		}
 		
-		Schedule sch = new Schedule(service, data,cls);
+		//Cliente
+		System.out.println("Digite o cpf do cliente que deseja fazer agendar uma revisão: ");
+		String cl = scanner.nextLine();
+		Client cls = null;
+		for (Client cli : clients) {
+			if(cli.getCpf().equals(cl) && cli.getVehicle() != null) {
+				cls = cli;
+			}else {
+				System.out.println("Cliente não encontrado ou não possue veiculo");
+			}
+		}
+		
+		
+		
+		Schedule sch = new Schedule(descriptionService, data,cls);
 		
 		sch.setId(idS);
 		idS++;
 		
 		schedules.add(sch);
+		
+		System.out.println("Agendamento realizado com sucesso!");
 	}
 	
 	public void printSchedule() {
+		//Cliente
+		System.out.println("Digite o cpf do cliente que deseja gerar o relatório: ");
+		String cl = scanner.nextLine();
 		for (Schedule sche : schedules) {
-			System.out.println(sche.getClient().getName());
-			System.out.println(sche.getDate());
-
+			if(sche.getClient().getCpf() == cl) {
+				System.out.println("Agendamento feito para o/a: "+sche.getClient().getName());
+				System.out.println("No dia: "+sche.getDate());
+				System.out.println("Contento o seguinte serviço: "+sche.getService());
+			}
 		}
 	}
 	
