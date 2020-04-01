@@ -17,6 +17,8 @@ public class App {
 		int op = 1000;
 		int alt = 0;
 		boolean autenticado = false;
+		
+		
 		menu.imprimirMenuIniciar();
 		alt = controle.opcao();
 		switch(alt) {
@@ -31,10 +33,12 @@ public class App {
 		default:
 			menu.imprimirMenuIniciar();
 		}
+		
 		/*System.out.println(autenticado);
 		if(!autenticado) {
 			login.cadastrarUsuario();
 		}*/
+		
 		if(autenticado) {
 			while(op != 0) {
 				menu.imprimirMenu();
@@ -46,7 +50,7 @@ public class App {
 					break;
 				case 2:
 					caixa.cadastrarEntrada();
-					caixa.imprimirEntrada();
+					//caixa.imprimirEntrada();
 					break;
 				case 3:
 					caixa.cadastrarSaida();
@@ -55,7 +59,7 @@ public class App {
 					caixa.relatorioMensal();
 					break;
 				case 5:
-					//agenda.comprar();;
+					caixa.relatorioSemanal();
 					break;
 				case 6:
 					//agenda.imprimirRelatorios();

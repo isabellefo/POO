@@ -91,12 +91,11 @@ public class Login {
 	}
 	
 	//Incompleta
-	/*public void trocarDeUsuario() {
+	public void trocarDeUsuario() {
 		Usuario u;
 		u = userLogado();
 		u.setLogado(false);
-		
-	}*/
+	}
 	
 	
 	
