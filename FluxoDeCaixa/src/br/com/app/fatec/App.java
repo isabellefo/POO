@@ -9,12 +9,16 @@ import br.com.negocio.fatec.Menu;
 
 public class App {
 	public static void main(String[] args) throws ParseException{
-		//AsciiArt.printAsciiArt("Agenda");
+
 		Menu menu = new Menu();
 		Login login = new Login();
 		Caixa caixa = new Caixa();
 		int op = 1000;
 		boolean autenticado = login.autenticar();
+		System.out.println(autenticado);
+		if(!autenticado) {
+			login.cadastrarUsuario();
+		}
 		while(autenticado) {
 			while(op != 0) {
 				menu.imprimirMenu();

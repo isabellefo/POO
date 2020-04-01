@@ -70,7 +70,7 @@ public class Usuario {
 	public void setLogado(boolean logado) {
 		this.logado= logado;
 	}
-	public boolean getLodago() {
+	public boolean getLogado() {
 		return this.logado;
 	}
 	

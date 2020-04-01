@@ -3,9 +3,12 @@ package br.com.modelo.fatec;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import br.com.negocio.fatec.Menu;
+
 public class Login {
 	
 	public Scanner scanner = new Scanner(System.in);
+	public Menu menu = new Menu();
 	public static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	public void cadastrarUsuario() {
@@ -43,7 +46,9 @@ public class Login {
 		String email = scanner.nextLine();
 		
 		//Tipo de usuário
-		System.out.println("Digite o tipo de usuário");
+		System.out.println("Selecione o tipo de usuário");
+		System.out.println("[1] - Pessoa Física");
+		System.out.println("[2] - Pessoa Juridica");
 		int t = Integer.parseInt(scanner.nextLine());
 		while(t!=1 && t!=2) {
 			System.out.println("Selecione uma opção válida!");
@@ -76,12 +81,35 @@ public class Login {
 	
 	public Usuario userLogado() {
 		for (Usuario usuario : usuarios) {
-			if (usuario.getLodago() == true){
+			if (usuario.getLogado() == true){
 				return usuario;
 			}
 		}
 		return null;
 	}
+	
+	//Incompleta
+	/*public void trocarDeUsuario() {
+		Usuario u;
+		u = userLogado();
+		u.setLogado(false);
+		
+	}*/
+	
+	/*public void loginInicial() {
+		menu.imprimirMenuIniciar();
+		int op = Integer.parseInt(scanner.nextLine());
+		while(op!=1 && op!=2) {
+			System.out.println("Selecione uma opção válida!");
+			op = Integer.parseInt(scanner.nextLine());
+		}
+		if(op==1) {
+			autenticar();
+		}else {
+			cadastrarUsuario();
+		}
+	}*/
+	
 	
 	
 

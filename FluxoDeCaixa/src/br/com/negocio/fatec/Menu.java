@@ -7,9 +7,15 @@ public class Menu {
 		System.out.println("[2] - Cadastrar entrada");
 		System.out.println("[3] - Cadastrar saída");
 		System.out.println("[4] - Imprimir relatório");
-		//System.out.println("[5] - Adicionar produtos a lista de compras");
+		System.out.println("[5] - Trocar de usuário");
 		//System.out.println("[6] - Imprimir relatórios");
 		System.out.println("[0] - Sair");
+	}
+	
+	public void imprimirMenuIniciar() {
+		System.out.println("|~~~~ MENU INICIAR~~~~|");
+		System.out.println("[1] - Realizar login");
+		System.out.println("[2] - Criar conta");
 	}
 
 }
