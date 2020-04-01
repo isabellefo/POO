@@ -6,7 +6,7 @@ public class Menu {
 		System.out.println("[1] - Cadastrar usuário");
 		System.out.println("[2] - Cadastrar entrada");
 		System.out.println("[3] - Cadastrar saída");
-		System.out.println("[4] - Imprimir relatório");
+		System.out.println("[4] - Imprimir relatório mensal");
 		System.out.println("[5] - Trocar de usuário");
 		//System.out.println("[6] - Imprimir relatórios");
 		System.out.println("[0] - Sair");

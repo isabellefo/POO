@@ -70,12 +70,14 @@ public class Login {
 		String s = scanner.nextLine();
 		
 		for (Usuario usuario : usuarios) {
-			if((usuario.getUser() == u) && (usuario.getSenha() == s)) {
+			if((usuario.getUser().equals(u)) && (usuario.getSenha().equals(s))) {
 				usuario.setLogado(true);
+
 				return true;
 			}
 		}
 		System.out.println("Usuário ou senha inválidos");
+		//autenticar();
 		return false;
 	}
 	
@@ -94,20 +96,6 @@ public class Login {
 		u = userLogado();
 		u.setLogado(false);
 		
-	}*/
-	
-	/*public void loginInicial() {
-		menu.imprimirMenuIniciar();
-		int op = Integer.parseInt(scanner.nextLine());
-		while(op!=1 && op!=2) {
-			System.out.println("Selecione uma opção válida!");
-			op = Integer.parseInt(scanner.nextLine());
-		}
-		if(op==1) {
-			autenticar();
-		}else {
-			cadastrarUsuario();
-		}
 	}*/
 	
 	

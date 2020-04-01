@@ -13,16 +13,32 @@ public class App {
 		Menu menu = new Menu();
 		Login login = new Login();
 		Caixa caixa = new Caixa();
+		Controle controle = new Controle();
 		int op = 1000;
-		boolean autenticado = login.autenticar();
-		System.out.println(autenticado);
+		int alt = 0;
+		boolean autenticado = false;
+		menu.imprimirMenuIniciar();
+		alt = controle.opcao();
+		switch(alt) {
+		case 1:
+			autenticado = login.autenticar();
+			break;
+		case 2:
+			login.cadastrarUsuario();
+			System.out.println("-----ENTRAR NO SISTEMA-----");
+			autenticado = login.autenticar();
+			break;
+		default:
+			menu.imprimirMenuIniciar();
+		}
+		/*System.out.println(autenticado);
 		if(!autenticado) {
 			login.cadastrarUsuario();
-		}
-		while(autenticado) {
+		}*/
+		if(autenticado) {
 			while(op != 0) {
 				menu.imprimirMenu();
-				Controle controle = new Controle();
+				
 				op = controle.opcao();
 				switch (op) {
 				case 1:
@@ -30,12 +46,13 @@ public class App {
 					break;
 				case 2:
 					caixa.cadastrarEntrada();
+					caixa.imprimirEntrada();
 					break;
 				case 3:
-					//agenda.editarClientes();
+					caixa.cadastrarSaida();
 					break;
 				case 4:
-					//agenda.excluirCliente();
+					caixa.relatorioMensal();
 					break;
 				case 5:
 					//agenda.comprar();;

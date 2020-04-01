@@ -14,7 +14,7 @@ public class Saida {
 		this.usuario = usuario;
 		this.valor = valor;
 		try {
-			this.data = new SimpleDateFormat("dd/MM/aaaa").parse(data);
+			this.data = new SimpleDateFormat("dd/MM/yyyy").parse(data);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
