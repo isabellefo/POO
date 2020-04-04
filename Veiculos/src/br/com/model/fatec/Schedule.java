@@ -2,18 +2,19 @@ package br.com.model.fatec;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Schedule {
 	public Scanner scanner = new Scanner(System.in);
-	
-	private String _service;
+	public List<String> _service = new ArrayList<String>();
 	private Date _date;
 	private Client _client;
 	private int _idSchedule;
 	
-	public Schedule(String service, String date, Client client) {
+	public Schedule(List<String> service, String date, Client client) {
 		_service  = service;
 		try {
 			_date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
@@ -28,7 +29,7 @@ public class Schedule {
 		return _date;
 	}
 	
-	public String getService() {
+	public List<String> getService() {
 		return _service;
 	}
 	
@@ -36,7 +37,7 @@ public class Schedule {
 		this._date = date;
 	}
 	
-	public void setService(String service) {
+	public void setService(List<String> service) {
 		this._service = service;
 	}
 	
@@ -72,14 +73,30 @@ public class Schedule {
 		
 	}
 	
-	public void changeService(){
-		System.out.println("Digite o novo serviço a ser feito:");
-		String service = scanner.nextLine();
-		this.setService(service);
+	public void changeService(List<Service> services){
+		List<String> descriptionService = new ArrayList<String>();
+		int resp = 1;
+		while(resp == 1) {
+			//Serviço
+			System.out.println("Selecione o serviço (pelo id): ");
+			for (Service service : services) {
+				System.out.println("[ "+service.getId()+" ] - " +"DESCRIÇÃO: " +service.getDescription());
+			}
+			int idSer = Integer.parseInt(scanner.nextLine());
+			for (Service service : services) {
+				if(service.getId() == idSer) {
+					descriptionService.add((String) service.getDescription());
+				}
+			}
+			System.out.println("Serviço adicionado");
+			System.out.println("Deseja adicionar mais um serviço ? SIM(1), NÃO(2)");
+			resp = Integer.parseInt(scanner.nextLine());
+		}
+		this.setService(descriptionService);
 		System.out.println("Serviço alterado!");
 	}
 	
-	public void editSchedule(){
+	public void editSchedule(List<Service> services){
 		System.out.println("1- Mudar data.");
 		System.out.println("2- Editar serviço.");
 		int opt = scanner.nextInt();
@@ -90,7 +107,7 @@ public class Schedule {
 			break;
 		
 		case 2:
-			changeService();
+			changeService(services);
 			break;
 	
 		}

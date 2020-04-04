@@ -112,18 +112,23 @@ public class Options {
 		System.out.println("Insira a data da revisão:");
 		String data = scanner.nextLine();
 		
-		//Serviço
-		System.out.println("Selecione o serviço (pelo id): ");
-		for (Service service : services) {
-			System.out.println("[ "+service.getId()+" ] - " +"DESCRIÇÃO: " +service.getDescription());
-		}
-		
-		String descriptionService = "";
-		int idSer = Integer.parseInt(scanner.nextLine());
-		for (Service service : services) {
-			if(service.getId() == idSer) {
-				descriptionService = service.getDescription();
+		List<String> descriptionService = new ArrayList<String>();
+		int resp = 1;
+		while(resp == 1) {
+			//Serviço
+			System.out.println("Selecione o serviço (pelo id): ");
+			for (Service service : services) {
+				System.out.println("[ "+service.getId()+" ] - " +"DESCRIÇÃO: " +service.getDescription());
 			}
+			int idSer = Integer.parseInt(scanner.nextLine());
+			for (Service service : services) {
+				if(service.getId() == idSer) {
+					descriptionService.add((String) service.getDescription());
+				}
+			}
+			System.out.println("Serviço adicionado");
+			System.out.println("Deseja adicionar mais um serviço ? SIM(1), NÃO(2)");
+			resp = Integer.parseInt(scanner.nextLine());
 		}
 		
 		//Cliente
@@ -139,7 +144,6 @@ public class Options {
 		}
 		
 		
-		
 		Schedule sch = new Schedule(descriptionService, data,cls);
 		
 		sch.setId(idS);
@@ -151,14 +155,21 @@ public class Options {
 	}
 	
 	public void printSchedule() {
-		//Cliente
-		System.out.println("Digite o cpf do cliente que deseja gerar o relatório: ");
-		String cl = scanner.nextLine();
-		for (Schedule sche : schedules) {
-			if(sche.getClient().getCpf() == cl) {
-				System.out.println("Agendamento feito para o/a: "+sche.getClient().getName());
-				System.out.println("No dia: "+sche.getDate());
-				System.out.println("Contento o seguinte serviço: "+sche.getService());
+		System.out.println("Selecione o agendamento que deseja gerar o relatorio (pelo id)");
+		for (Schedule schedule : schedules) {
+			System.out.println("[ "+schedule.getIdSchedule()+" ] - NOME DO CLIENTE: "+schedule.getClient().getName()+"\n"+
+			"DATA DO AGENDAMENTO: "+f.format(schedule.getDate()));
+		}
+		int idClient = Integer.parseInt(scanner.nextLine());
+		for (Schedule sch : schedules) {
+			if(sch.getIdSchedule() == idClient) {
+				System.out.println("Agendamento feito para o/a: "+sch.getClient().getName());
+				System.out.println("No dia: "+sch.getDate());
+				System.out.println("Contento os seguintes serviços: ");
+				List<String> services = sch.getService();
+				for(String service : services) {
+					System.out.println(service);
+				}
 			}
 		}
 	}
@@ -174,7 +185,7 @@ public class Options {
 		int idClient = Integer.parseInt(scanner.nextLine());
 		for (Schedule schedule : schedules) {
 			if(schedule.getIdSchedule() == idClient) {
-				schedule.editSchedule();
+				schedule.editSchedule(services);
 			}
 		}
 	}
