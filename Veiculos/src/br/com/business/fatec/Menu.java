@@ -2,7 +2,7 @@ package br.com.business.fatec;
 
 public class Menu {
 	public void ShowMenu() {
-		System.out.println("#### Menu ####");
+		System.out.println("|~~~~~~ MENU ~~~~~~|");
 		System.out.println("1 - Cadastro de cliente");
 		System.out.println("2 - Cadastro de veiculo");
 		System.out.println("3 - Cadastro de serviço");

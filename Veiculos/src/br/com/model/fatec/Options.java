@@ -53,41 +53,49 @@ public class Options {
 	}
 	
 	public void createVehicle() {
-	
-		//Número da placa
-		System.out.println("Insira a placa do carro:");
-		String plate = scanner.nextLine();
-	
-		//Modelo
-		System.out.println("Insira o modelo do carro:");
-		String version = scanner.nextLine();
-	
-		//Ano de fabricação
-		System.out.println("Insira o ano de fabricação:");
-		int year = Integer.parseInt(scanner.nextLine());
 		
-		//Valor de compra
-		System.out.println("Insira o valor de compra:");
-		double value = Double.parseDouble(scanner.nextLine());
+		if(clients.isEmpty()!=true) {
+	
+			//Número da placa
+			System.out.println("Insira a placa do carro:");
+			String plate = scanner.nextLine();
+		
+			//Modelo
+			System.out.println("Insira o modelo do carro:");
+			String version = scanner.nextLine();
+		
+			//Ano de fabricação
+			System.out.println("Insira o ano de fabricação:");
+			int year = Integer.parseInt(scanner.nextLine());
 			
-		Vehicle v = new Vehicle(plate, version, year, value);
-		
-		System.out.println("Selecione o dono do veículo (pelo id): ");
-		for (Client cli : clients) {
-			if(cli.getVehicle() == null) {
-				System.out.println("[ "+cli.getIdClient()+" ] - " +"NOME: " +cli.getName() + "\n" +
-				"CPF: " + cli.getCpf());
+			//Valor de compra
+			System.out.println("Insira o valor de compra:");
+			double value = Double.parseDouble(scanner.nextLine());
+				
+			Vehicle v = new Vehicle(plate, version, year, value);
+			
+			System.out.println("Selecione o dono do veículo (pelo id): ");
+			for (Client cli : clients) {
+				if(cli.getVehicle() == null) {
+					System.out.println("[ "+cli.getIdClient()+" ] - " +"NOME: " +cli.getName() + "\n" +
+					"CPF: " + cli.getCpf());
+				}
 			}
-		}
-		
-		int idCli = Integer.parseInt(scanner.nextLine());
-		for (Client cli : clients) {
-			if(cli.getIdClient() == idCli) {
-				cli.setVehicle(v);
+			
+			int idCli = Integer.parseInt(scanner.nextLine());
+			for (Client cli : clients) {
+				if(cli.getIdClient() == idCli) {
+					cli.setVehicle(v);
+				}else {
+					System.out.println("Cliente não encontrado! Tente novamente");
+					return;
+				}
 			}
+			
+			System.out.println("Novo veiculo adicionado!");
+		}else {
+			System.out.println("Por favor cadastre um cliente antes de cadstrar o veículo!");
 		}
-		
-		System.out.println("Novo veiculo adicionado!");
 	
 		
 	}
@@ -108,53 +116,64 @@ public class Options {
 	//Falta exceções
 	public void scheduleReview() {
 		
-		//Data
-		System.out.println("Insira a data da revisão:");
-		String data = scanner.nextLine();
+		if(services.isEmpty()!=true) {
+			if(clients.isEmpty()!=true) {
 		
-		List<String> descriptionService = new ArrayList<String>();
-		int resp = 1;
-		while(resp == 1) {
-			//Serviço
-			System.out.println("Selecione o serviço (pelo id): ");
-			for (Service service : services) {
-				System.out.println("[ "+service.getId()+" ] - " +"DESCRIÇÃO: " +service.getDescription());
-			}
-			int idSer = Integer.parseInt(scanner.nextLine());
-			for (Service service : services) {
-				if(service.getId() == idSer) {
-					descriptionService.add((String) service.getDescription());
+				//Data
+				System.out.println("Insira a data da revisão:");
+				String data = scanner.nextLine();
+				
+				List<String> descriptionService = new ArrayList<String>();
+				int resp = 1;
+				while(resp == 1) {
+					//Serviço
+					System.out.println("Selecione o serviço (pelo id): ");
+					for (Service service : services) {
+						System.out.println("[ "+service.getId()+" ] - " +"DESCRIÇÃO: " +service.getDescription());
+					}
+					int idSer = Integer.parseInt(scanner.nextLine());
+					for (Service service : services) {
+						if(service.getId() == idSer) {
+							descriptionService.add((String) service.getDescription());
+						}
+					}
+					System.out.println("Serviço adicionado");
+					System.out.println("Deseja adicionar mais um serviço ? SIM(1), NÃO(2)");
+					resp = Integer.parseInt(scanner.nextLine());
 				}
-			}
-			System.out.println("Serviço adicionado");
-			System.out.println("Deseja adicionar mais um serviço ? SIM(1), NÃO(2)");
-			resp = Integer.parseInt(scanner.nextLine());
-		}
-		
-		//Cliente
-		System.out.println("Digite o cpf do cliente que deseja fazer agendar uma revisão: ");
-		String cl = scanner.nextLine();
-		Client cls = null;
-		for (Client cli : clients) {
-			if(cli.getCpf().equals(cl) && cli.getVehicle() != null) {
-				cls = cli;
+				
+				//Cliente
+				System.out.println("Digite o cpf do cliente que deseja fazer agendar uma revisão: ");
+				String cl = scanner.nextLine();
+				Client cls = null;
+				for (Client cli : clients) {
+					if(cli.getCpf().equals(cl) && cli.getVehicle() != null) {
+						cls = cli;
+					}else {
+						System.out.println("Cliente não encontrado ou não possui veiculo");
+						return;
+					}
+				}
+				
+				
+				Schedule sch = new Schedule(descriptionService, data,cls);
+				
+				sch.setId(idS);
+				idS++;
+				
+				schedules.add(sch);
+				
+				System.out.println("Agendamento realizado com sucesso!");
 			}else {
-				System.out.println("Cliente não encontrado ou não possue veiculo");
+				System.out.println("Por favor cadastre um cliente antes de realizar um agendamento!");
 			}
+		}else {
+			System.out.println("Por favor cadastre os serviços antes de realizar um agendamento!");
 		}
-		
-		
-		Schedule sch = new Schedule(descriptionService, data,cls);
-		
-		sch.setId(idS);
-		idS++;
-		
-		schedules.add(sch);
-		
-		System.out.println("Agendamento realizado com sucesso!");
 	}
 	
 	public void printSchedule() {
+		if(schedules.isEmpty()!=true) {
 		System.out.println("Selecione o agendamento que deseja gerar o relatorio (pelo id)");
 		for (Schedule schedule : schedules) {
 			System.out.println("[ "+schedule.getIdSchedule()+" ] - NOME DO CLIENTE: "+schedule.getClient().getName()+"\n"+
@@ -164,49 +183,68 @@ public class Options {
 		for (Schedule sch : schedules) {
 			if(sch.getIdSchedule() == idClient) {
 				System.out.println("Agendamento feito para o/a: "+sch.getClient().getName());
-				System.out.println("No dia: "+sch.getDate());
-				System.out.println("Contento os seguintes serviços: ");
+				System.out.println("Placa do carro: "+sch.getClient().getVehicle().getPlateNumber());
+				System.out.println("Modelo : "+sch.getClient().getVehicle().getVersion());
+				System.out.println("Ano : "+sch.getClient().getVehicle().getYearManufacture());
+				System.out.println("No dia: "+f.format(sch.getDate()));
+				System.out.println("Contendo os seguintes serviços: ");
 				List<String> services = sch.getService();
 				for(String service : services) {
 					System.out.println(service);
 				}
-			}
-		}
-	}
-	
-	//Falta exceções
-	public void changeSchedule() {
-		System.out.println("Selecione o agendamento que deseja alterar (pelo id)");
-		for (Schedule schedule : schedules) {
-			System.out.println("[ "+schedule.getIdSchedule()+" ] - NOME DO CLIENTE: "+schedule.getClient().getName()+"\n"+
-			"DATA DO AGENDAMENTO: "+f.format(schedule.getDate()));
-			
-		}
-		int idClient = Integer.parseInt(scanner.nextLine());
-		for (Schedule schedule : schedules) {
-			if(schedule.getIdSchedule() == idClient) {
-				schedule.editSchedule(services);
-			}
-		}
-	}
-	
-	//Falta exceções
-	public void deleteSchedule() {
-		System.out.println("Selecione o agendamento que deseja cancelar (pelo id)");
-		for (Schedule schedule : schedules) {
-			System.out.println("[ "+schedule.getIdSchedule()+" ] - NOME DO CLIENTE: "+schedule.getClient().getName()+"\n"+
-			"CPF: " + schedule.getClient().getCpf() + 		
-			"DATA DO AGENDAMENTO: "+f.format(schedule.getDate()));
-			
-		}
-		int idSchedule = Integer.parseInt(scanner.nextLine());
-		for (Schedule schedule : schedules) {
-			if(schedule.getIdSchedule() == idSchedule) {
-				schedules.remove(schedule);
-				System.out.println("Agendamento cancelado");
+			}else {
+				System.out.println("ID do cliente não encontrado! Tente novamente");
 			}
 		}
 		
+		}else {
+			System.out.println("Primeiro faça um agendamento!");
+		}
+	}
+	
+	public void changeSchedule() {
+		if(schedules.isEmpty()!=true) {
+			System.out.println("Selecione o agendamento que deseja alterar (pelo id)");
+			for (Schedule schedule : schedules) {
+				System.out.println("[ "+schedule.getIdSchedule()+" ] - NOME DO CLIENTE: "+schedule.getClient().getName()+"\n"+
+				"DATA DO AGENDAMENTO: "+f.format(schedule.getDate()));
+				
+			}
+			int idClient = Integer.parseInt(scanner.nextLine());
+			for (Schedule schedule : schedules) {
+				if(schedule.getIdSchedule() == idClient) {
+					schedule.editSchedule(services);
+				}else {
+					System.out.println("ID de agendamento não encontrado! Tente novamente");
+				}
+			}
+		}else {
+			System.out.println("Primeiro faça um agendamento!");
+		}
+	}
+	
+	public void deleteSchedule() {
+		if(schedules.isEmpty()!=true) {
+			System.out.println("Selecione o agendamento que deseja cancelar (pelo id)");
+			for (Schedule schedule : schedules) {
+				System.out.println("[ "+schedule.getIdSchedule()+" ] - NOME DO CLIENTE: "+schedule.getClient().getName()+"\n"+
+				"CPF: " + schedule.getClient().getCpf() + 		
+				"DATA DO AGENDAMENTO: "+f.format(schedule.getDate()));
+				
+			}
+			int idSchedule = Integer.parseInt(scanner.nextLine());
+			for (Schedule schedule : schedules) {
+				if(schedule.getIdSchedule() == idSchedule) {
+					schedules.remove(schedule);
+					System.out.println("Agendamento cancelado");
+				}else {
+					System.out.println("ID de agendamento não encontrado! Tente novamente");
+				}
+			}
+		
+		}else {
+			System.out.println("Primeiro faça um agendamento!");
+		}
 		
 	}
 
