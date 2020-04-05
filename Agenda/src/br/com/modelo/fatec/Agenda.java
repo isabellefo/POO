@@ -54,6 +54,7 @@ public class Agenda {
 			if (pe.getNome().equals(nome)) {
 				pessoas.remove(pe);
 				System.out.println(pe.getNome() + " excluido com sucesso.\n");
+				return;
 			}
 		}
 	}

@@ -228,7 +228,7 @@ public class Options {
 			System.out.println("Selecione o agendamento que deseja cancelar (pelo id)");
 			for (Schedule schedule : schedules) {
 				System.out.println("[ "+schedule.getIdSchedule()+" ] - NOME DO CLIENTE: "+schedule.getClient().getName()+"\n"+
-				"CPF: " + schedule.getClient().getCpf() + 		
+				"CPF: " + schedule.getClient().getCpf() + 	"\n"	+
 				"DATA DO AGENDAMENTO: "+f.format(schedule.getDate()));
 				
 			}
@@ -237,6 +237,7 @@ public class Options {
 				if(schedule.getIdSchedule() == idSchedule) {
 					schedules.remove(schedule);
 					System.out.println("Agendamento cancelado");
+					return;
 				}else {
 					System.out.println("ID de agendamento não encontrado! Tente novamente");
 				}
