@@ -79,7 +79,8 @@ public class Agenda {
 			for(int i = 0; i < 6; ++i) {
 				System.out.println("[" + i + "] "+ produtos[i] +" x"+ pessoa.getQtdProdutos(i));
 			}
-			System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
+			System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
+		
 		}
 	}
 	
@@ -94,7 +95,7 @@ public class Agenda {
 				for(int i = 0; i < 6; ++i) {
 					System.out.println("[" + i + "] "+ produtos[i] +" x"+ pessoa.getQtdProdutos(i));
 				}
-				System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
+				System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
 			} 
 		}
 		
@@ -106,7 +107,7 @@ public class Agenda {
 				for(int i = 0; i < 6; ++i) {
 					System.out.println("[" + i + "] "+ produtos[i] +" x"+ pessoa.getQtdProdutos(i));
 				}
-				System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|");
+				System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
 			} 
 		}
 	}

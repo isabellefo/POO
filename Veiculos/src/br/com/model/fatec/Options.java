@@ -113,7 +113,6 @@ public class Options {
 	}
 	
 	
-	//Falta exceções
 	public void scheduleReview() {
 		
 		if(services.isEmpty()!=true) {

@@ -29,7 +29,6 @@ public class Main {
 				optionControl.scheduleReview();
 				break;
 			case 7:
-				//PROVISÓRIO
 				optionControl.printSchedule();
 				break;
 			case 5:
