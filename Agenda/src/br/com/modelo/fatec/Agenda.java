@@ -55,6 +55,8 @@ public class Agenda {
 				pessoas.remove(pe);
 				System.out.println(pe.getNome() + " excluido com sucesso.\n");
 				return;
+			}else {
+				System.out.println("Cliente não encontrado!");
 			}
 		}
 	}
@@ -65,8 +67,11 @@ public class Agenda {
 		System.out.println("Digite o nome do cliente que deseja alterar: ");
 		String nome = scanner.nextLine();
 		for (Pessoa pessoa : pessoas) {
-			if(pessoa.getNome().equals(nome))
+			if(pessoa.getNome().equals(nome)) {
 				pessoa.editaCliente();
+			}else{
+				System.out.println("Cliente não encontrado!");
+			}
 		}
 	}
 
