@@ -2,13 +2,14 @@ package br.com.modelo.fatec;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
+
 import java.text.ParseException;
 
 public class Agenda {
-	public List<Pessoa> pessoas = new ArrayList<Pessoa>();
-	public Scanner scanner = new Scanner(System.in);
+	
+	public ArrayList<Pessoa> pessoas =new ArrayList<Pessoa>();
+	Scanner scanner = new Scanner(System.in);
 	private String[] produtos = {"Corte de cabelo","Pintura de cabelo","Manicure","Pedicure","Corte de barba","Shampoo Antiqueda"};
 	
 	
@@ -44,7 +45,7 @@ public class Agenda {
 		}
 	}
 	
-	//Exlcuir cliente
+	//Excluir cliente
 	public void excluirCliente() {
 		String nome;
 		imprimirNomeCliente();

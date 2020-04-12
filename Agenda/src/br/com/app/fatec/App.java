@@ -31,7 +31,7 @@ public class App {
 				agenda.excluirCliente();
 				break;
 			case 5:
-				agenda.comprar();;
+				agenda.comprar();
 				break;
 			case 6:
 				agenda.imprimirRelatorios();

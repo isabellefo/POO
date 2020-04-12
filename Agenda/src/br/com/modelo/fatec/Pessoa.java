@@ -1,5 +1,6 @@
 package br.com.modelo.fatec;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,8 +9,8 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 
+public class Pessoa implements Comparable<Pessoa>, Serializable{ 
 
-public class Pessoa implements Comparable<Pessoa>{ 
 	private String nome;
 	private Telefone telefone;
 	private char genero;
@@ -18,7 +19,7 @@ public class Pessoa implements Comparable<Pessoa>{
 	private int[] qtdProdutos = new int[6];
 	
 	SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-	public Scanner scanner = new Scanner(System.in);
+	public transient Scanner scanner = new Scanner(System.in);
 	
 	public Pessoa(String nome, Telefone telefone, char genero, String dataNascimento) {
 		this.nome = nome;

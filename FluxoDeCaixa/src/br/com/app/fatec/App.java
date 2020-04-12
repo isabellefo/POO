@@ -18,26 +18,25 @@ public class App {
 		int alt = 0;
 		boolean autenticado = false;
 		
-		
-		menu.imprimirMenuIniciar();
-		alt = controle.opcao();
-		switch(alt) {
-		case 1:
-			autenticado = login.autenticar();
-			break;
-		case 2:
-			login.cadastrarUsuario();
-			System.out.println("-----ENTRAR NO SISTEMA-----");
-			autenticado = login.autenticar();
-			break;
-		default:
+		while(alt != -1) {
 			menu.imprimirMenuIniciar();
+			alt = controle.opcao();
+			switch(alt) {
+			case 1:
+				autenticado = login.autenticar();
+				break;
+			case 2:
+				login.cadastrarUsuario();
+				System.out.println("-----ENTRAR NO SISTEMA-----");
+				autenticado = login.autenticar();
+				if(autenticado == true) {
+					alt = -1;
+				}
+				break;
+			default:
+				menu.imprimirMenuIniciar();
+			}
 		}
-		
-		/*System.out.println(autenticado);
-		if(!autenticado) {
-			login.cadastrarUsuario();
-		}*/
 		
 		if(autenticado) {
 			while(op != 0) {
