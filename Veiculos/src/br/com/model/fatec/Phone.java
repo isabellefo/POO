@@ -8,8 +8,15 @@ public class Phone {
 	}
 	
 	public String getNumber() {
-		String n = _number.substring(0, 5) + "-";
-		n += _number.substring(5);
+		String n = _number;
+		if(this._number.length() == 9) {
+			n = this._number.substring(0, 5) + "-";
+			n += this._number.substring(5);
+		}else if(this._number.length() == 9) {
+			n = this._number.substring(0, 4) + "-";
+			n += this._number.substring(4);
+		}
+		
 		return n;
 	}
 	
