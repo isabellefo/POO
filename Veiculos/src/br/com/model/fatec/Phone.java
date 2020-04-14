@@ -12,7 +12,7 @@ public class Phone {
 		if(this._number.length() == 9) {
 			n = this._number.substring(0, 5) + "-";
 			n += this._number.substring(5);
-		}else if(this._number.length() == 9) {
+		}else if(this._number.length() == 8) {
 			n = this._number.substring(0, 4) + "-";
 			n += this._number.substring(4);
 		}
