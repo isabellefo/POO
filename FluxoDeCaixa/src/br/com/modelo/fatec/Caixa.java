@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
+import br.com.negocio.fatec.Menu;
+
 public class Caixa {
 	
 	private String[] grupoEPFisica = {"Salario", "Investimento"};
@@ -45,7 +47,7 @@ public class Caixa {
 		double v = Double.parseDouble(scanner.nextLine());
 		
 		//Data
-		System.out.println("Digite a data:");
+		System.out.println("Digite a data: (dd/mm/aaaa)");
 		String d = scanner.nextLine();
 		
 		Entrada entrada = new Entrada(u, v, d, t);
@@ -104,14 +106,17 @@ public class Caixa {
 		String d = scanner.nextLine();
 		int m = Integer.parseInt(d.substring(0,2));
 		int a = Integer.parseInt(d.substring(3));
-		int totalPMensal = 0;
-		int totalNMensal = 0;
+		double totalPMensal = 0;
+		double totalNMensal = 0;
 		
 		System.out.println("----ENTRADA----");
 		for (Entrada entrada : entradas) {
 			if((entrada.getData().getMonth()+1 == m)&&(entrada.getData().getYear()+1900 == a)){
-				System.out.println(entrada.getGrupo()+ ": " +"R$"+entrada.getValor());
-				System.out.println(f.format(entrada.getData()));
+				if(u.getTipo() == 1)
+					System.out.println(grupoEPFisica[entrada.getGrupo()]+ ": " +"R$"+entrada.getValor());
+				else
+					System.out.println(grupoEPJuridica[entrada.getGrupo()]+ ": " +"R$"+entrada.getValor());
+				System.out.println("Data: " + f.format(entrada.getData())+ "\n");
 				totalPMensal+=entrada.getValor();
 			}
 		}
@@ -119,8 +124,11 @@ public class Caixa {
 		System.out.println("\n----SAIDA----");
 		for (Saida saida: saidas) {
 			if((saida.getData().getMonth()+1 == m)&&(saida.getData().getYear()+1900 == a)){
-				System.out.println(saida.getGrupo()+ ": " +"R$"+saida.getValor());
-				System.out.println(f.format(saida.getData()));
+				if(u.getTipo() == 1)
+					System.out.println(grupoSPFisica[saida.getGrupo()]+ ": " +"R$"+saida.getValor());
+				else
+					System.out.println(grupoSPJuridica[saida.getGrupo()]+ ": " +"R$"+saida.getValor());
+				System.out.println("Data: " + f.format(saida.getData())+ "\n");
 				totalNMensal+=saida.getValor();
 			}
 		}
@@ -148,15 +156,18 @@ public class Caixa {
 		int semana = calendar.get(Calendar.WEEK_OF_YEAR); 
 		int semana2;
 		
-		int totalPSemanal= 0;
-		int totalNSemanal = 0;
+		double totalPSemanal= 0;
+		double totalNSemanal = 0;
 		System.out.println("----ENTRADA----");
 		for (Entrada entrada : entradas) {
 			calendar2.setTime(entrada.getData());
 			semana2 = calendar2.get(Calendar.WEEK_OF_YEAR);
 			if(semana == semana2) {
-				System.out.println(entrada.getGrupo()+ ": " +"R$"+entrada.getValor());
-				System.out.println(f.format(entrada.getData()));
+				if(u.getTipo() == 1)
+					System.out.println(grupoEPFisica[entrada.getGrupo()]+ ": " +"R$"+entrada.getValor());
+				else
+					System.out.println(grupoEPJuridica[entrada.getGrupo()]+ ": " +"R$"+entrada.getValor());
+				System.out.println("Data: "+f.format(entrada.getData())+"\n");
 				totalPSemanal+=entrada.getValor();
 			}
 		}
@@ -166,8 +177,11 @@ public class Caixa {
 			calendar2.setTime(saida.getData());
 			semana2 = calendar2.get(Calendar.WEEK_OF_YEAR);
 			if(semana == semana2) {
-				System.out.println(saida.getGrupo()+ ": " +"R$"+saida.getValor());
-				System.out.println(f.format(saida.getData()));
+				if(u.getTipo() == 1)
+					System.out.println(grupoSPFisica[saida.getGrupo()]+ ": " +"R$"+saida.getValor());
+				else
+					System.out.println(grupoSPJuridica[saida.getGrupo()]+ ": " +"R$"+saida.getValor());
+				System.out.println("Data: "+f.format(saida.getData())+"\n");
 				totalNSemanal+=saida.getValor();
 			}
 		}
@@ -176,7 +190,41 @@ public class Caixa {
 	}
 		
 
-	
+	public void menuPrincipal() {
+		Menu menu = new Menu();
+		int op = 1000;
+		
+		while(op != 0) {
+			menu.imprimirMenu();
+			
+			op = Integer.parseInt(scanner.nextLine());
+			switch (op) {
+			case 1:
+				login.cadastrarUsuario();
+				break;
+			case 2:
+				cadastrarEntrada();
+				break;
+			case 3:
+				cadastrarSaida();
+				break;
+			case 4:
+				relatorioMensal();
+				break;
+			case 5:
+				relatorioSemanal();
+				break;
+			case 6:
+				login.trocarDeUsuario();
+				login.menuIniciar();
+			case 7:
+				login.imprimirUsuario();
+				break;
+			default:
+				menu.imprimirMenu();
+			}
+		}
+	}
 	
 	
 }

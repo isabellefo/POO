@@ -3,6 +3,7 @@ package br.com.modelo.fatec;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import br.com.negocio.fatec.Controle;
 import br.com.negocio.fatec.Menu;
 
 public class Login {
@@ -15,6 +16,12 @@ public class Login {
 		//User
 		System.out.println("Digite o nome de usuário:");
 		String u = scanner.nextLine();
+		for (Usuario usu : usuarios) {
+			while(u.equals(usu.getNome())) {
+				System.out.println("O usuário escolhido já existe, por favor escolha outro:");
+				u = scanner.nextLine();
+			}
+		}
 		
 		//Senha
 		System.out.println("Digite a senha:");
@@ -44,6 +51,10 @@ public class Login {
 		//Email
 		System.out.println("Digite seu email:");
 		String email = scanner.nextLine();
+		while(!email.contains("@")) {
+			System.out.println("Por favor digite um email válido:");
+			email = scanner.nextLine();
+		}
 		
 		//Tipo de usuário
 		System.out.println("Selecione o tipo de usuário");
@@ -77,7 +88,6 @@ public class Login {
 			}
 		}
 		System.out.println("Usuário ou senha inválidos");
-		//autenticar();
 		return false;
 	}
 	
@@ -89,13 +99,56 @@ public class Login {
 		}
 		return null;
 	}
-	
-	//Incompleta
-	public void trocarDeUsuario() {
+
+	public boolean trocarDeUsuario() {
 		Usuario u;
 		u = userLogado();
 		u.setLogado(false);
+		return false;
 	}
+	
+	public void imprimirUsuario() {
+		for (Usuario usuario : usuarios) {
+			if(usuario.getLogado()==true) {
+				System.out.println("Usuário: "+usuario.getUser());
+				System.out.println("Nome: " + usuario.getNome());
+				System.out.println(usuario.getTipo());
+				System.out.println("Email: " + usuario.getEmail());
+			}
+		}
+	}
+	
+	public void menuIniciar() {
+		Caixa c = new Caixa();
+		
+		int alt = 0;
+		boolean autenticado = false;
+		
+		while(alt != -1) {
+			menu.imprimirMenuIniciar();
+			alt = Integer.parseInt(scanner.nextLine());
+			switch(alt) {
+			case 1:
+				autenticado = autenticar();
+				if(autenticado == true) {
+					c.menuPrincipal();
+				}
+				break;
+			case 2:
+				cadastrarUsuario();
+				System.out.println("-----ENTRAR NO SISTEMA-----");
+				autenticado = autenticar();
+				if(autenticado == true) {
+					c.menuPrincipal();
+				}
+				break;
+			default:
+				menu.imprimirMenuIniciar();
+			}
+		}
+	}
+	
+	
 	
 	
 	
