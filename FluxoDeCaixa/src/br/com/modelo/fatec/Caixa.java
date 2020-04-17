@@ -53,6 +53,7 @@ public class Caixa {
 		Entrada entrada = new Entrada(u, v, d, t);
 		
 		entradas.add(entrada);
+		System.out.println("Nova entrada cadastrada!");
 		
 	}
 	
@@ -86,6 +87,7 @@ public class Caixa {
 		Saida saida = new Saida(u, v, d, t);
 		
 		saidas.add(saida);
+		System.out.println("Nova saída cadastrada!");
 		
 	}
 	
@@ -108,7 +110,7 @@ public class Caixa {
 		int a = Integer.parseInt(d.substring(3));
 		double totalPMensal = 0;
 		double totalNMensal = 0;
-		
+		System.out.println("|--------RELATÓRIO MENSAL--------|");
 		System.out.println("----ENTRADA----");
 		for (Entrada entrada : entradas) {
 			if((entrada.getData().getMonth()+1 == m)&&(entrada.getData().getYear()+1900 == a)){
@@ -158,6 +160,7 @@ public class Caixa {
 		
 		double totalPSemanal= 0;
 		double totalNSemanal = 0;
+		System.out.println("|--------RELATÓRIO SEMANAL--------|");
 		System.out.println("----ENTRADA----");
 		for (Entrada entrada : entradas) {
 			calendar2.setTime(entrada.getData());

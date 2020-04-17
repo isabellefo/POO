@@ -110,10 +110,17 @@ public class Login {
 	public void imprimirUsuario() {
 		for (Usuario usuario : usuarios) {
 			if(usuario.getLogado()==true) {
+				System.out.println("|---PERFIL---|");
 				System.out.println("Usuário: "+usuario.getUser());
 				System.out.println("Nome: " + usuario.getNome());
-				System.out.println(usuario.getTipo());
-				System.out.println("Email: " + usuario.getEmail());
+				System.out.println("Telefone: " + usuario.getTelefone().getNumero());
+				if(usuario.getTipo() == 1) {
+					System.out.println("Pessoa Física");
+				}else {
+					System.out.println("Pessoa Jurídica");
+				}
+				
+				System.out.println("Email: " + usuario.getEmail()+"\n");
 			}
 		}
 	}

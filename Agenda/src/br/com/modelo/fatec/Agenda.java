@@ -16,16 +16,16 @@ public class Agenda {
 	public void cadastrarPessoa() throws ParseException{
 		
 		//Nome
-		System.out.println("Insira o nome do cliente:");
+		System.out.println("Insira o nome do cliente: ");
 		String nome = scanner.nextLine();
 		
 		// Dados de contato
-		System.out.println("Insira o telefone do cliente (9 dígitos):");
+		System.out.println("Insira o telefone do cliente: ");
 		String tel = scanner.nextLine();
 		Telefone telefone = new Telefone(tel);
 		
 		// Dados de nascimento
-		System.out.println("Insira a data de nascimento do cliente (dd/mm/aaaa):");
+		System.out.println("Insira a data de nascimento do cliente (dd/mm/aaaa): ");
 		String data = scanner.nextLine();
         
         //Genero

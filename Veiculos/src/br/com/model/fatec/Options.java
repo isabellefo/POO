@@ -65,7 +65,7 @@ public class Options {
 			String version = scanner.nextLine();
 		
 			//Ano de fabricação
-			System.out.println("Insira o ano de fabricação:");
+			System.out.println("Insira o ano de fabricação (aaaa): ");
 			int year = Integer.parseInt(scanner.nextLine());
 			
 			//Valor de compra
@@ -94,7 +94,7 @@ public class Options {
 			
 			System.out.println("Novo veiculo adicionado!");
 		}else {
-			System.out.println("Por favor cadastre um cliente antes de cadstrar o veículo!");
+			System.out.println("Por favor cadastre um cliente antes de cadastrar o veículo!");
 		}
 	
 		
@@ -119,7 +119,7 @@ public class Options {
 			if(clients.isEmpty()!=true) {
 		
 				//Data
-				System.out.println("Insira a data da revisão:");
+				System.out.println("Insira a data da revisão(dd/mm/aaaa):");
 				String data = scanner.nextLine();
 				
 				List<String> descriptionService = new ArrayList<String>();
