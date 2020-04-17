@@ -16,6 +16,8 @@ public class Options {
 	int idS = 0;
 	int idService = 0;
 	int idC = 0;
+	
+	//Cadastrar um cliente
 	public void createClient(){
 		//Nome
 		System.out.println("Insira o nome do cliente:");
@@ -52,9 +54,11 @@ public class Options {
 		
 	}
 	
+	//Cadastrar um veículo
 	public void createVehicle() {
 		
 		if(clients.isEmpty()!=true) {
+			int cont = 0;
 	
 			//Número da placa
 			System.out.println("Insira a placa do carro:");
@@ -86,13 +90,18 @@ public class Options {
 			for (Client cli : clients) {
 				if(cli.getIdClient() == idCli) {
 					cli.setVehicle(v);
+					System.out.println("Novo veiculo adicionado!");
 				}else {
-					System.out.println("Cliente não encontrado! Tente novamente");
-					return;
+					cont++;
+					//System.out.println("Cliente não encontrado! Tente novamente");
+					//return;
 				}
 			}
 			
-			System.out.println("Novo veiculo adicionado!");
+			if(cont==clients.size()) {
+				System.out.println("Cliente não encontrado! Tente novamente");
+			}
+			
 		}else {
 			System.out.println("Por favor cadastre um cliente antes de cadastrar o veículo!");
 		}
@@ -100,6 +109,7 @@ public class Options {
 		
 	}
 	
+	//Cadastrar um serviço
 	public void createService(){
 		//Nome
 		System.out.println("Insira a descrição do serviço:");
@@ -112,12 +122,13 @@ public class Options {
 		
 	}
 	
-	
+	//Agendar uma revisão
 	public void scheduleReview() {
 		
 		if(services.isEmpty()!=true) {
 			if(clients.isEmpty()!=true) {
-		
+				
+				int cont = 0;
 				//Data
 				System.out.println("Insira a data da revisão(dd/mm/aaaa):");
 				String data = scanner.nextLine();
@@ -146,14 +157,21 @@ public class Options {
 				String cl = scanner.nextLine();
 				Client cls = null;
 				for (Client cli : clients) {
+					
 					if(cli.getCpf().equals(cl) && cli.getVehicle() != null) {
 						cls = cli;
 					}else {
-						System.out.println("Cliente não encontrado ou não possui veiculo");
-						return;
+						cont++;
+						//System.out.println("Cliente não encontrado ou não possui veiculo");
+						//return;
 					}
 				}
 				
+				if(cont==clients.size()) {
+					System.out.println("Cliente não encontrado ou não possui veiculo");
+				}else {
+					System.out.println("Agendamento realizado com sucesso!");
+				}
 				
 				Schedule sch = new Schedule(descriptionService, data,cls);
 				
@@ -162,7 +180,7 @@ public class Options {
 				
 				schedules.add(sch);
 				
-				System.out.println("Agendamento realizado com sucesso!");
+				
 			}else {
 				System.out.println("Por favor cadastre um cliente antes de realizar um agendamento!");
 			}
@@ -171,6 +189,7 @@ public class Options {
 		}
 	}
 	
+	//Imprimir relatório de agendamentos
 	public void printSchedule() {
 		if(schedules.isEmpty()!=true) {
 		System.out.println("Selecione o agendamento que deseja gerar o relatorio (pelo id)");
@@ -201,6 +220,7 @@ public class Options {
 		}
 	}
 	
+	//Editar agendamento
 	public void changeSchedule() {
 		if(schedules.isEmpty()!=true) {
 			System.out.println("Selecione o agendamento que deseja alterar (pelo id)");
@@ -222,6 +242,7 @@ public class Options {
 		}
 	}
 	
+	//Excluir agendamento
 	public void deleteSchedule() {
 		if(schedules.isEmpty()!=true) {
 			System.out.println("Selecione o agendamento que deseja cancelar (pelo id)");

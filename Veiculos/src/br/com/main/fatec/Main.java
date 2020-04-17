@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		Menu menu = new Menu();
 		Options optionControl = new Options();
-		int op = 0;
+		int op = 10;
 		do{
 			menu.ShowMenu();
 			Controller controle = new Controller();
@@ -36,6 +36,9 @@ public class Main {
 				break;
 			case 6:
 				optionControl.deleteSchedule();
+				break;
+			case 0:
+				System.out.println("Programa finalizado!");
 				break;
 			default:
 				menu.ShowMenu();

@@ -128,10 +128,10 @@ public class Login {
 	public void menuIniciar() {
 		Caixa c = new Caixa();
 		
-		int alt = 0;
+		int alt = -1;
 		boolean autenticado = false;
 		
-		while(alt != -1) {
+		while(alt != 0) {
 			menu.imprimirMenuIniciar();
 			alt = Integer.parseInt(scanner.nextLine());
 			switch(alt) {
@@ -148,6 +148,9 @@ public class Login {
 				if(autenticado == true) {
 					c.menuPrincipal();
 				}
+				break;
+			case 0:
+				System.out.println("Programa finalizado!");
 				break;
 			default:
 				menu.imprimirMenuIniciar();

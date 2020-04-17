@@ -25,16 +25,22 @@ public class App {
 				agenda.imprimirClientes();
 				break;
 			case 3:
-				agenda.editarClientes();
+				agenda.imprimirClientesPorGenero();
 				break;
 			case 4:
-				agenda.excluirCliente();
+				agenda.editarClientes();
 				break;
 			case 5:
-				agenda.comprar();
+				agenda.excluirCliente();
 				break;
 			case 6:
+				agenda.comprar();
+				break;
+			case 7:
 				agenda.imprimirRelatorios();
+				break;
+			case 0:
+				System.out.println("Programa finalizado!");
 				break;
 			default:
 				menu.imprimirMenu();

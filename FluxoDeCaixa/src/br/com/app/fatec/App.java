@@ -15,11 +15,11 @@ public class App {
 		Caixa caixa = new Caixa();
 		Controle controle = new Controle();
 		int op = 1000;
-		int alt = 0;
+		int alt = -1;
 		boolean autenticado = false;
 		
 		
-		while(alt != -1) {
+		while(alt != 0) {
 			menu.imprimirMenuIniciar();
 			alt = controle.opcao();
 			switch(alt) {
@@ -36,6 +36,9 @@ public class App {
 				if(autenticado == true) {
 					caixa.menuPrincipal();
 				}
+				break;
+			case 0:
+				System.out.println("Programa finalizado!");
 				break;
 			default:
 				menu.imprimirMenuIniciar();

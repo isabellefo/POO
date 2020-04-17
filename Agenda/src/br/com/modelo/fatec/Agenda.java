@@ -49,30 +49,34 @@ public class Agenda {
 	public void excluirCliente() {
 		String nome;
 		imprimirNomeCliente();
-		System.out.println("Digite o nome do cliente que deseja excluir: ");
-		nome = scanner.nextLine();
-		for (Pessoa pe : pessoas) {
-			if (pe.getNome().equals(nome)) {
-				pessoas.remove(pe);
-				System.out.println(pe.getNome() + " excluido com sucesso.\n");
-				return;
-			}else {
-				System.out.println("Cliente não encontrado!");
+		if(!pessoas.isEmpty()) {
+			System.out.println("Digite o nome do cliente que deseja excluir: ");
+			nome = scanner.nextLine();
+			for (Pessoa pe : pessoas) {
+				if (pe.getNome().equals(nome)) {
+					pessoas.remove(pe);
+					System.out.println(pe.getNome() + " excluido com sucesso.\n");
+					return;
+				}
 			}
+		}else {
+			System.out.println("Primeiramente cadastre um cliente!");
 		}
 	}
 	
 	//Editar cadastro do cliente
 	public void editarClientes() {
 		imprimirNomeCliente();
-		System.out.println("Digite o nome do cliente que deseja alterar: ");
-		String nome = scanner.nextLine();
-		for (Pessoa pessoa : pessoas) {
-			if(pessoa.getNome().equals(nome)) {
-				pessoa.editaCliente();
-			}else{
-				System.out.println("Cliente não encontrado!");
+		if(!pessoas.isEmpty()) {
+			System.out.println("Digite o nome do cliente que deseja alterar: ");
+			String nome = scanner.nextLine();
+			for (Pessoa pessoa : pessoas) {
+				if(pessoa.getNome().equals(nome)) {
+					pessoa.editaCliente();
+				}
 			}
+		}else {
+			System.out.println("Primeiramente cadastre um cliente!");
 		}
 	}
 
