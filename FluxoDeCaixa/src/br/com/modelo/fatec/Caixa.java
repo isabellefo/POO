@@ -219,7 +219,7 @@ public class Caixa {
 				break;
 			case 6:
 				login.trocarDeUsuario();
-				login.menuIniciar();
+				login.atalho();
 				op = 0;
 				break;
 			case 7:

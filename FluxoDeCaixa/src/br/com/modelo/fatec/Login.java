@@ -125,13 +125,13 @@ public class Login {
 		}
 	}
 	
-	public void menuIniciar() {
-		Caixa c = new Caixa();
+	public void atalho() {
+		/*Caixa c = new Caixa();
 		
 		int alt = -1;
-		boolean autenticado = false;
-		
-		while(alt != 0) {
+		boolean autenticado = false;*/
+		return;
+		/*while(alt != 0) {
 			menu.imprimirMenuIniciar();
 			alt = Integer.parseInt(scanner.nextLine());
 			switch(alt) {
@@ -156,7 +156,7 @@ public class Login {
 			default:
 				menu.imprimirMenuIniciar();
 			}
-		}
+		}*/
 	}
 	
 	
