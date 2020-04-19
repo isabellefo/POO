@@ -173,35 +173,39 @@ public class Agenda {
 	
 	//Produtos
 	public void comprar() {
-		int i;
-		System.out.println("PRODUTOS: ");
-		for(i = 0; i < this.produtos.length; ++i) {
-			System.out.println("[" + i + "]" + produtos[i]);
-		}
-		
-		System.out.println("+~~~~~~~~~~~~~~~~~~~~~~~~~+");
-		System.out.println("Selecione o produto que deseja comprar (pelo id):");
-		int prod = Integer.parseInt(scanner.nextLine());
-		System.out.println("Insira a quantidade:");
-		int qtd = Integer.parseInt(scanner.nextLine());
-		
-		imprimirNomeCliente();
-		System.out.println("Selecione o cliente que deseja adicionar o item na lista:");
-		String pe = scanner.nextLine();
-		
-		for (Pessoa pessoa : pessoas) {
-			if (pessoa.getNome().equals(pe)) {
-				pessoa.setQtdProdutos(prod, qtd);
-				System.out.println("Item adicionado ao histório!");
+		if(!pessoas.isEmpty()) {
+			int i;
+			System.out.println("PRODUTOS: ");
+			for(i = 0; i < this.produtos.length; ++i) {
+				System.out.println("[" + i + "]" + produtos[i]);
 			}
+			
+			System.out.println("+~~~~~~~~~~~~~~~~~~~~~~~~~+");
+			System.out.println("Selecione o produto que deseja comprar (pelo id):");
+			int prod = Integer.parseInt(scanner.nextLine());
+			System.out.println("Insira a quantidade:");
+			int qtd = Integer.parseInt(scanner.nextLine());
+			
+			imprimirNomeCliente();
+			System.out.println("Selecione o cliente que deseja adicionar o item na lista:");
+			String pe = scanner.nextLine();
+			
+			for (Pessoa pessoa : pessoas) {
+				if (pessoa.getNome().equals(pe)) {
+					pessoa.setQtdProdutos(prod, qtd);
+					System.out.println("Item adicionado ao histório!");
+				}
+			}
+			System.out.println("Deseja continuar comprando? ('S'/'N')");
+			 char op = scanner.nextLine().charAt(0);
+			 if(op == 'S') {
+				 comprar();
+			 }else {
+				 System.out.println("Operação finalizada");
+			 }
+		}else {
+			System.out.println("Por favor, cadastre um cliente!");
 		}
-		System.out.println("Deseja continuar comprando? ('S'/'N')");
-		 char op = scanner.nextLine().charAt(0);
-		 if(op == 'S') {
-			 comprar();
-		 }else {
-			 System.out.println("Operação finalizada");
-		 }
 	}
 	
 	//Determinar produto mais consumido pelo publico
@@ -261,10 +265,14 @@ public class Agenda {
 	}
 	
 	public void imprimirRelatorios() {
-		calcularIdadeMedia();
-		calcularIdadeMediaGenero();
-		determinarProdConsumido();
-		determinarProdConsumidoGenero();
+		if(!pessoas.isEmpty()) {
+			calcularIdadeMedia();
+			calcularIdadeMediaGenero();
+			determinarProdConsumido();
+			determinarProdConsumidoGenero();
+		}else{
+			System.out.println("Nenhum cliente cadastrado para geração de relatório!");
+		}
 	}
 	
 }

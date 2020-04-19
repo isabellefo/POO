@@ -191,6 +191,8 @@ public class Options {
 	
 	//Imprimir relatório de agendamentos
 	public void printSchedule() {
+		int cont = 0;
+		
 		if(schedules.isEmpty()!=true) {
 		System.out.println("Selecione o agendamento que deseja gerar o relatorio (pelo id)");
 		for (Schedule schedule : schedules) {
@@ -211,6 +213,10 @@ public class Options {
 					System.out.println(service);
 				}
 			}else {
+				cont++;
+				
+			}
+			if(cont == schedules.size()) {
 				System.out.println("ID do cliente não encontrado! Tente novamente");
 			}
 		}
@@ -222,6 +228,8 @@ public class Options {
 	
 	//Editar agendamento
 	public void changeSchedule() {
+		int cont = 0;
+		
 		if(schedules.isEmpty()!=true) {
 			System.out.println("Selecione o agendamento que deseja alterar (pelo id)");
 			for (Schedule schedule : schedules) {
@@ -234,6 +242,9 @@ public class Options {
 				if(schedule.getIdSchedule() == idClient) {
 					schedule.editSchedule(services);
 				}else {
+					cont++;
+				}
+				if(cont == schedules.size()) {
 					System.out.println("ID de agendamento não encontrado! Tente novamente");
 				}
 			}
@@ -244,6 +255,7 @@ public class Options {
 	
 	//Excluir agendamento
 	public void deleteSchedule() {
+		int cont = 0;
 		if(schedules.isEmpty()!=true) {
 			System.out.println("Selecione o agendamento que deseja cancelar (pelo id)");
 			for (Schedule schedule : schedules) {
@@ -259,7 +271,10 @@ public class Options {
 					System.out.println("Agendamento cancelado");
 					return;
 				}else {
-					System.out.println("ID de agendamento não encontrado! Tente novamente");
+					cont++;
+				}
+				if(cont == schedules.size()) {
+					System.out.println("Agendamento não encontrado! Tente novamente");
 				}
 			}
 		
