@@ -31,6 +31,10 @@ public class Agenda {
         //Genero
         System.out.println("Insira o gênero do cliente('F'/'M'): ");
         char genero = scanner.next().charAt(0);
+        while((genero!='F') && (genero!='M')) {
+        	System.out.println("Digite uma opção válida");
+        	 genero = scanner.next().charAt(0);
+        }
         scanner.nextLine();
 		
 		Pessoa c  = new Pessoa(nome, telefone, genero, data);
