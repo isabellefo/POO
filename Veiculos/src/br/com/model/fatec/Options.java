@@ -169,6 +169,7 @@ public class Options {
 				
 				if(cont==clients.size()) {
 					System.out.println("Cliente não encontrado ou não possui veiculo");
+					return;
 				}else {
 					System.out.println("Agendamento realizado com sucesso!");
 				}
