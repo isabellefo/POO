@@ -91,7 +91,7 @@ public class Agenda {
 			System.out.println(pessoa.toString());
 			System.out.println("PRODUTOS CONSUMIDOS");
 			for(int i = 0; i < 6; ++i) {
-				System.out.println("[" + i + "] "+ produtos[i] +" x"+ pessoa.getQtdProdutos(i));
+				System.out.println("*"+produtos[i] +" - Quantidade:"+ pessoa.getQtdProdutos(i));
 			}
 			System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
 		
@@ -107,7 +107,7 @@ public class Agenda {
 				System.out.println(pessoa.toString());
 				System.out.println("PRODUTOS CONSUMIDOS");
 				for(int i = 0; i < 6; ++i) {
-					System.out.println("[" + i + "] "+ produtos[i] +" x"+ pessoa.getQtdProdutos(i));
+					System.out.println("*"+produtos[i] +" - Quantidade:"+ pessoa.getQtdProdutos(i));
 				}
 				System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
 			} 
@@ -119,7 +119,7 @@ public class Agenda {
 				System.out.println(pessoa.toString());
 				System.out.println("PRODUTOS CONSUMIDOS");
 				for(int i = 0; i < 6; ++i) {
-					System.out.println("[" + i + "] "+ produtos[i] +" x"+ pessoa.getQtdProdutos(i));
+					System.out.println("*"+produtos[i] +" - Quantidade: "+ pessoa.getQtdProdutos(i));
 				}
 				System.out.println("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
 			} 
@@ -139,7 +139,7 @@ public class Agenda {
 	}
 	
 	
-	//Cálculo de iade média por gênero
+	//Cálculo de idade média por gênero
 	public void calcularIdadeMediaGenero() {
 		int counterf = 0;
 		int idadesf = 0;
