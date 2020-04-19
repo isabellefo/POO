@@ -125,39 +125,6 @@ public class Login {
 		}
 	}
 	
-	public void atalho() {
-		/*Caixa c = new Caixa();
-		
-		int alt = -1;
-		boolean autenticado = false;*/
-		return;
-		/*while(alt != 0) {
-			menu.imprimirMenuIniciar();
-			alt = Integer.parseInt(scanner.nextLine());
-			switch(alt) {
-			case 1:
-				autenticado = autenticar();
-				if(autenticado == true) {
-					c.menuPrincipal();
-				}
-				break;
-			case 2:
-				cadastrarUsuario();
-				System.out.println("-----ENTRAR NO SISTEMA-----");
-				autenticado = autenticar();
-				if(autenticado == true) {
-					c.menuPrincipal();
-				}
-				break;
-			case 0:
-				System.out.println("Tem certeza de deseja sair? \n");
-				alt = 0;
-				break;
-			default:
-				menu.imprimirMenuIniciar();
-			}
-		}*/
-	}
 	
 	
 	
