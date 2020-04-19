@@ -220,6 +220,7 @@ public class Caixa {
 			case 6:
 				login.trocarDeUsuario();
 				login.menuIniciar();
+				op = 0;
 				break;
 			case 7:
 				login.imprimirUsuario();

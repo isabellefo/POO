@@ -39,6 +39,7 @@ public class App {
 				break;
 			case 0:
 				System.out.println("Programa finalizado!");
+				alt = 0;
 				break;
 			default:
 				menu.imprimirMenuIniciar();

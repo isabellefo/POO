@@ -150,7 +150,8 @@ public class Login {
 				}
 				break;
 			case 0:
-				System.out.println("Programa finalizado!");
+				System.out.println("Tem certeza de deseja sair? \n");
+				alt = 0;
 				break;
 			default:
 				menu.imprimirMenuIniciar();
