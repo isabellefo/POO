@@ -10,5 +10,5 @@ Resolução e código fonte dos exercícios propostos para solucionar os problem
 
 ## Autores
 
-[Samuel Oliveira](https://github.com/scsoliveira)
-[Isabelle Oliveira](https://github.com/isabellefo)
+* [**Samuel Oliveira**](https://github.com/scsoliveira)
+* [**Isabelle Oliveira**](https://github.com/isabellefo)
