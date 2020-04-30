@@ -14,7 +14,7 @@ public class App {
 		Login login = new Login();
 		Caixa caixa = new Caixa();
 		Controle controle = new Controle();
-		int op = 1000;
+		//int op = 1000;
 		int alt = -1;
 		boolean autenticado = false;
 		
