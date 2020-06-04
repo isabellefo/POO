@@ -1,17 +1,29 @@
 package br.com.modelo.fatec;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente extends Pessoa{
-	private Animal[] animal = new Animal[5];
-	public Cliente(Telefone telefone, Endereço endereço, String nome, String CPF) {
+	public List<Animal> animal = new ArrayList<Animal>();
+	private int idCliente;  
+	public Cliente(Telefone telefone, Endereço endereço, String nome, String CPF, List<Animal> animal) {
 		super(telefone, endereço, nome, CPF);
-	}
-	
-	public void setAnimal(Animal[] animal) {
 		this.animal = animal;
 	}
 	
-	public Animal[] getAnimal() {
+	public void setAnimal(List<Animal> animal) {
+		this.animal = animal;
+	}
+	
+	public List<Animal> getAnimal() {
 		return animal;
 	}
 		
+	public int getIdClient() {
+		return idCliente;
+	}
+	
+	public void setIdClient(int idCliente) {
+		this.idCliente = idCliente;
+	}
 }
