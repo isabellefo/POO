@@ -129,14 +129,37 @@ public class Opcoes {
 	
 	public void createAtendimento() {
 		int i=0;
+		Profissional pr=null;
+		Cliente cl=null;
+		Animal an=null;
 		for (Profissional p : profissionais) {
-			System.out.println(p.getNome());
+			System.out.println("["+p.getIdProfissional()+"]."+p.getNome());
 		}
+		System.out.println("Selecione o profissional pelo seu ID:");
+		int idPr = Integer.parseInt(scanner.nextLine());
+
+		for (Profissional p : profissionais) {
+			if(p.getIdProfissional() == idPr) {
+				pr = p;
+				break;
+			}
+		}	
+		
 		for (Cliente c : clientes) {
-			System.out.println(c.getNome());
-			for(i=0; i<c.getAnimal().size();i++) {
-				System.out.println(c.getAnimal().get(i).getNome());
+			System.out.println("["+c.getIdClient()+"]."+c.getNome());
+			
+		}
+		
+		System.out.println("Selecione o cliente pelo seu ID:");
+		int idCl = Integer.parseInt(scanner.nextLine());
+		
+		for (Cliente c : clientes) {
+			if(c.getIdClient() == idCl) {
+				cl = c;
+				break;
 			}
 		}
+		
+		
 	}
 }
