@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente extends Pessoa{
-	public List<Animal> animal = new ArrayList<Animal>();
+	private List<Animal> animal = new ArrayList<Animal>();
 	private int idCliente;  
 	public Cliente(Telefone telefone, Endereço endereço, String nome, String CPF, List<Animal> animal) {
 		super(telefone, endereço, nome, CPF);

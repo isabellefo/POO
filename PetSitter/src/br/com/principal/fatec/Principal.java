@@ -20,6 +20,8 @@ public class Principal {
 			case 2:
 				optionControl.createCliente();
 				break;
+			case 3:
+				optionControl.createAtendimento();
 			case 0:
 				System.out.println("Programa finalizado!");
 				break;

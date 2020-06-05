@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.modelo.fatec.Animal;
+import br.com.modelo.fatec.Atendimento;
 import br.com.modelo.fatec.Cliente;
 import br.com.modelo.fatec.Endereço;
 import br.com.modelo.fatec.Profissional;
@@ -14,6 +15,7 @@ public class Opcoes {
 	
 	public List<Profissional> profissionais = new ArrayList<Profissional>();
 	public List<Cliente> clientes = new ArrayList<Cliente>();
+	public List<Atendimento> atendimentos = new ArrayList<Atendimento>();
 	public Scanner scanner = new Scanner(System.in);
 	int idP = 0;
 	int idC = 0;
@@ -113,6 +115,7 @@ public class Opcoes {
 			String val = scanner.nextLine();
 			oneMore = (val.equals("1")) ? true : false;
 			cont++;
+			System.out.println(cont);
 			
 		 }while(oneMore && cont < 5);
 		
@@ -122,5 +125,18 @@ public class Opcoes {
 		clientes.add(c);
 		System.out.println("Cliente e seus pets adicionado *-* !");
 		
+	}
+	
+	public void createAtendimento() {
+		int i=0;
+		for (Profissional p : profissionais) {
+			System.out.println(p.getNome());
+		}
+		for (Cliente c : clientes) {
+			System.out.println(c.getNome());
+			for(i=0; i<c.getAnimal().size();i++) {
+				System.out.println(c.getAnimal().get(i).getNome());
+			}
+		}
 	}
 }
