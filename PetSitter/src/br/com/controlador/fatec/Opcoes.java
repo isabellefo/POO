@@ -108,6 +108,7 @@ public class Opcoes {
 	        }
 			
 			Animal _animal = new Animal(namePet, breed, genre, age);
+			_animal.setIdPet(cont);
 			
 			animais.add(_animal);
 			
@@ -115,7 +116,6 @@ public class Opcoes {
 			String val = scanner.nextLine();
 			oneMore = (val.equals("1")) ? true : false;
 			cont++;
-			System.out.println(cont);
 			
 		 }while(oneMore && cont < 5);
 		
@@ -128,12 +128,12 @@ public class Opcoes {
 	}
 	
 	public void createAtendimento() {
-		int i=0;
-		Profissional pr=null;
-		Cliente cl=null;
-		Animal an=null;
+		Profissional pr = null;
+		Cliente cl = null;
+		Animal an = null;
+		
 		for (Profissional p : profissionais) {
-			System.out.println("["+p.getIdProfissional()+"]."+p.getNome());
+			System.out.println("["+p.getIdProfissional()+"]"+p.getNome());
 		}
 		System.out.println("Selecione o profissional pelo seu ID:");
 		int idPr = Integer.parseInt(scanner.nextLine());
@@ -146,7 +146,7 @@ public class Opcoes {
 		}	
 		
 		for (Cliente c : clientes) {
-			System.out.println("["+c.getIdClient()+"]."+c.getNome());
+			System.out.println("["+c.getIdClient()+"]"+c.getNome());
 			
 		}
 		
@@ -159,6 +159,27 @@ public class Opcoes {
 				break;
 			}
 		}
+		
+		for (Animal a : cl.getAnimal()) {
+			System.out.println("["+a.getIdPet()+"]"+a.getNome());
+		}
+		
+		System.out.println("Selecione o pet do cliente pelo seu ID:");
+		int idA = Integer.parseInt(scanner.nextLine());
+		
+		for (Animal a : cl.getAnimal()) {
+			if(a.getIdPet() == idA) {
+				an = a;
+				break;
+			}
+		}
+		
+		System.out.println("Insira a data do agendamento:");
+		String date = scanner.nextLine();
+		
+		Atendimento _atendimento = new Atendimento(cl, pr, an, date);
+		atendimentos.add(_atendimento);		
+		System.out.println("Atendimento realizado para a(o) " + an.getNome()+ " !");
 		
 		
 	}

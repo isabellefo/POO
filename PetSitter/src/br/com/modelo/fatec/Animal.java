@@ -1,6 +1,7 @@
 package br.com.modelo.fatec;
 
 public class Animal {
+	private int idPet;
 	private String nome;
 	private String raça;
 	private char genero;
@@ -35,6 +36,13 @@ public class Animal {
 	}
 	public void setRaça(String raça) {
 		this.raça = raça;
+	}
+	public int getIdPet() {
+		return idPet;
+	}
+	
+	public void setIdPet(int idPet) {
+		this.idPet = idPet;
 	}
 
 }
