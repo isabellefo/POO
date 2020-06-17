@@ -22,6 +22,10 @@ public class Principal {
 				break;
 			case 3:
 				optionControl.createAtendimento();
+				break;
+			case 4:
+				optionControl.historicoAtendimento();
+				break;
 			case 0:
 				System.out.println("Programa finalizado!");
 				break;

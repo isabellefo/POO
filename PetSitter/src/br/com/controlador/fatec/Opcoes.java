@@ -1,6 +1,7 @@
 package br.com.controlador.fatec;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -181,6 +182,34 @@ public class Opcoes {
 		atendimentos.add(_atendimento);		
 		System.out.println("Atendimento realizado para a(o) " + an.getNome()+ " !");
 		
+		
+	}
+	
+	public void historicoAtendimento() {
+		for (Profissional p : profissionais) {
+			System.out.println("["+p.getIdProfissional()+"]"+p.getNome());
+		}
+		System.out.println("Selecione o profissional pelo seu ID:");
+		int idPr = Integer.parseInt(scanner.nextLine());
+		for (Atendimento atendimento : atendimentos) {
+			if(atendimento.getProfissional().getIdProfissional() == idPr) {
+				System.out.println("Dia do atendimento:" + atendimento.getDate());
+				System.out.println("Nome do Profissional: "+ atendimento.getProfissional().getNome());
+				System.out.println("CPF do Profissional:" + atendimento.getProfissional().getCPF());
+				System.out.println("Nome do Cliente: "+ atendimento.getCliente().getNome());
+				System.out.println("CPF do Cliente:" + atendimento.getCliente().getCPF());
+				System.out.println("Nome do Pet:" + atendimento.getAnimal().getNome());
+				System.out.println("---------------------------------------");
+			}
+		}
+	}
+	
+	
+	public void ranckingRaca() {
+		
+	}
+	
+	public void generoPreferido() {
 		
 	}
 }

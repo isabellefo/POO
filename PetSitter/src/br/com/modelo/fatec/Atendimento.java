@@ -33,4 +33,5 @@ public class Atendimento {
 	public Profissional getProfissional() {
 		return profissional;
 	}
+
 }

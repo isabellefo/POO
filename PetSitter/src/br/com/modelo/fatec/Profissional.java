@@ -13,4 +13,7 @@ public class Profissional extends Pessoa{
 	public void setIdProfissional(int idProfissional) {
 		this.idProfissional = idProfissional;
 	}
+	
+
+
 }
