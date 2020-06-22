@@ -26,6 +26,9 @@ public class Principal {
 			case 4:
 				optionControl.historicoAtendimento();
 				break;
+			case 5:
+				optionControl.ranckingRaca();
+				break;
 			case 0:
 				System.out.println("Programa finalizado!");
 				break;
