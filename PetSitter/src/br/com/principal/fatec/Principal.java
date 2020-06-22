@@ -29,6 +29,9 @@ public class Principal {
 			case 5:
 				optionControl.ranckingRaca();
 				break;
+			case 6:
+				optionControl.generoPreferido();
+				break;
 			case 0:
 				System.out.println("Programa finalizado!");
 				break;

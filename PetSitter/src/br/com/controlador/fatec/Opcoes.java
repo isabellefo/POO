@@ -225,11 +225,37 @@ public class Opcoes {
 		            toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2,
 		                    LinkedHashMap::new));
 		
-		orded.forEach((k,v)->System.out.println("Chave:"+k+"| Valor:"+v));
-		
+		 int k = 1;
+		 for (Map.Entry<String,Integer> pair : orded.entrySet()) {
+			 if(k<11)
+				 System.out.println(k+"°- "+pair.getKey()+": "+pair.getValue());
+			 else
+				 break;
+			 k++;
+		}
 	}
 	
 	public void generoPreferido() {
+		int fem = 0;
+		int masc = 0;
+		for (Animal a : totalAnimais) {
+			if(a.getGenero() == 'F') {
+				fem++;
+			}else {
+				masc++;
+			}
+		}
+		
+		System.out.println("Animais do gênero feminino:" + fem);
+		System.out.println("Animais do gênero masculino:" + masc);
+		
+		if(fem>masc) {
+			System.out.println("O gênero preferido é o feminino");
+		}else if(masc>fem) {
+			System.out.println("O gênero preferido é o masculino");
+		}else if(masc == fem){
+			System.out.println("Não há preferência de gênero");
+		}
 		
 	}
 }

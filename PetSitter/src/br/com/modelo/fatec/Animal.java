@@ -44,7 +44,8 @@ public class Animal {
 	public void setIdPet(int idPet) {
 		this.idPet = idPet;
 	}
-
+	
+	
 	
 
 }
