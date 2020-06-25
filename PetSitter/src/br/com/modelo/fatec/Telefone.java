@@ -1,6 +1,8 @@
 package br.com.modelo.fatec;
 
-public class Telefone {
+import java.io.Serializable;
+
+public class Telefone implements Serializable{
 	private String numero;
 	
 	public Telefone(String numero) {

@@ -1,10 +1,11 @@
 package br.com.modelo.fatec;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Atendimento {
+public class Atendimento implements Serializable{
 	private Cliente cliente;
 	private Profissional profissional;
 	private Animal animal;

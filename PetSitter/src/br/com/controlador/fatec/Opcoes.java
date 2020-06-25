@@ -10,21 +10,48 @@ import java.util.Scanner;
 
 import br.com.modelo.fatec.Animal;
 import br.com.modelo.fatec.Atendimento;
+import br.com.modelo.fatec.Banco;
 import br.com.modelo.fatec.Cliente;
+import br.com.modelo.fatec.Dados;
 import br.com.modelo.fatec.Endereço;
 import br.com.modelo.fatec.Profissional;
 import br.com.modelo.fatec.Telefone;
 import static java.util.stream.Collectors.*;
+
+import java.text.SimpleDateFormat;
 public class Opcoes {
 	
 	public List<Profissional> profissionais = new ArrayList<Profissional>();
 	public List<Cliente> clientes = new ArrayList<Cliente>();
 	public List<Atendimento> atendimentos = new ArrayList<Atendimento>();
 	public List<Animal> totalAnimais = new ArrayList<Animal>();
+	SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
 	public Scanner scanner = new Scanner(System.in);
+	
+	public Banco b = new Banco(System.getProperty("user.dir"));
 	int idP = 0;
 	int idC = 0;
+	Dados d = new Dados();
 	
+	//Método para leitura de dados
+	public void leitura() throws Exception {
+		d = (Dados) b.ler();
+		clientes = d.clientes;
+		atendimentos = d.atendimentos;
+		profissionais = d.profissionais;
+		totalAnimais = d.animais;
+	}
+	
+	//Método para salvar dados
+	public void salvar() throws Exception {
+		d.clientes = clientes;
+		d.atendimentos = atendimentos;
+		d.profissionais = profissionais;
+		d.animais = totalAnimais;
+		b.escrever(d);
+	}
+	
+	//Cadastro de profissionais
 	public void createProfissional(){
 		//Nome
 		System.out.println("Insira o nome do profissional:");
@@ -61,7 +88,8 @@ public class Opcoes {
 		
 	}
 	
-	public void createCliente() {
+	//Cadastro de cliente e seus animais
+	public void createCliente() throws Exception {
 		//Nome
 		System.out.println("Insira o nome do cliente:");
 		String name = scanner.nextLine();
@@ -125,7 +153,6 @@ public class Opcoes {
 		 }while(oneMore && cont < 5);
 		
 		Cliente c  = new Cliente(phone, address, name, cpf, animais);
-		
 		c.setIdClient(idC);
 		idC++;
 		clientes.add(c);
@@ -133,6 +160,7 @@ public class Opcoes {
 		
 	}
 	
+	//Cadastro de atendimento
 	public void createAtendimento() {
 		Profissional pr = null;
 		Cliente cl = null;
@@ -180,16 +208,17 @@ public class Opcoes {
 			}
 		}
 		
-		System.out.println("Insira a data do agendamento:");
+		System.out.println("Insira a data do agendamento(dd/mm/aaaa):");
 		String date = scanner.nextLine();
 		
 		Atendimento _atendimento = new Atendimento(cl, pr, an, date);
 		atendimentos.add(_atendimento);		
-		System.out.println("Atendimento realizado para a(o) " + an.getNome()+ " !");
+		System.out.println("Atendimento marcado para a(o) " + an.getNome()+ " !");
 		
 		
 	}
 	
+	//Relatório de histórico de atendimento
 	public void historicoAtendimento() {
 		for (Profissional p : profissionais) {
 			System.out.println("["+p.getIdProfissional()+"]"+p.getNome());
@@ -198,7 +227,7 @@ public class Opcoes {
 		int idPr = Integer.parseInt(scanner.nextLine());
 		for (Atendimento atendimento : atendimentos) {
 			if(atendimento.getProfissional().getIdProfissional() == idPr) {
-				System.out.println("Dia do atendimento:" + atendimento.getDate());
+				System.out.println("Dia do atendimento:" + f.format(atendimento.getDate()));
 				System.out.println("Nome do Profissional: "+ atendimento.getProfissional().getNome());
 				System.out.println("CPF do Profissional:" + atendimento.getProfissional().getCPF());
 				System.out.println("Nome do Cliente: "+ atendimento.getCliente().getNome());
@@ -209,6 +238,7 @@ public class Opcoes {
 		}
 	}
 	
+	//Relatório de racking de raças
 	public void ranckingRaca() {
 		Map<String, Integer> racas = new HashMap<>();
 		System.out.println(totalAnimais.size());
@@ -235,6 +265,7 @@ public class Opcoes {
 		}
 	}
 	
+	//Relatório de gênero preferido
 	public void generoPreferido() {
 		int fem = 0;
 		int masc = 0;

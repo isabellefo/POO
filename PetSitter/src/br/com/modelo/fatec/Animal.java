@@ -1,6 +1,8 @@
 package br.com.modelo.fatec;
 
-public class Animal {
+import java.io.Serializable;
+
+public class Animal implements Serializable{
 	private int idPet;
 	private String nome;
 	private String raça;

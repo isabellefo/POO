@@ -1,6 +1,8 @@
 package br.com.modelo.fatec;
 
-public class Pessoa {
+import java.io.Serializable;
+
+public class Pessoa implements Serializable{
 	
 	private Telefone telefone;
 	private Endereço endereço;

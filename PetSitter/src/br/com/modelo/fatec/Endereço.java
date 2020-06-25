@@ -1,6 +1,8 @@
 package br.com.modelo.fatec;
 
-public class Endereço {
+import java.io.Serializable;
+
+public class Endereço implements Serializable{
 	private String rua;
 	private String bairro;
 	private String cidade;
