@@ -49,6 +49,7 @@ public class Opcoes {
 		d.profissionais = profissionais;
 		d.animais = totalAnimais;
 		b.escrever(d);
+		System.out.println("Informações salvas!");
 	}
 	
 	//Cadastro de profissionais
@@ -63,15 +64,15 @@ public class Opcoes {
 		Telefone phone = new Telefone(number);
 		
 		// Dados de endereco
-		System.out.printf("Insira a cidade: ");
+		System.out.println("Insira a cidade: ");
 		String cidade = scanner.nextLine();
-		System.out.printf("Insira a rua: ");
+		System.out.println("Insira a rua: ");
 		String rua = scanner.nextLine();
-		System.out.printf("Insira o bairro: ");
+		System.out.println("Insira o bairro: ");
 		String bairro = scanner.nextLine();
-		System.out.printf("Insira o estado: ");
+		System.out.println("Insira o estado: ");
 		String estado = scanner.nextLine();
-		System.out.printf("Insira o CEP: ");
+		System.out.println("Insira o CEP: ");
 		String cep = scanner.nextLine();
 		Endereço address = new Endereço(rua, bairro, cidade, estado, cep);
 		
@@ -84,7 +85,7 @@ public class Opcoes {
 		p.setIdProfissional(idP);
 		idP++;
 		profissionais.add(p);
-		System.out.println("Novo Profissional adicionado!");
+		System.out.println("Profissional cadastrado com sucesso!\n");
 		
 	}
 	
@@ -100,15 +101,15 @@ public class Opcoes {
 		Telefone phone = new Telefone(number);
 				
 		// Dados de endereco
-		System.out.printf("Insira a cidade: ");
+		System.out.println("Insira a cidade: ");
 		String cidade = scanner.nextLine();
-		System.out.printf("Insira a rua: ");
+		System.out.println("Insira a rua: ");
 		String rua = scanner.nextLine();
-		System.out.printf("Insira o bairro: ");
+		System.out.println("Insira o bairro: ");
 		String bairro = scanner.nextLine();
-		System.out.printf("Insira o estado: ");
+		System.out.println("Insira o estado: ");
 		String estado = scanner.nextLine();
-		System.out.printf("Insira o CEP: ");
+		System.out.println("Insira o CEP: ");
 		String cep = scanner.nextLine();
 		Endereço address = new Endereço(rua, bairro, cidade, estado, cep);
 				
@@ -117,6 +118,7 @@ public class Opcoes {
 		System.out.println("Insira o CPF do cliente");
 		String cpf = scanner.nextLine();
 		
+		//Cadastro do pet
 		List<Animal> animais = new ArrayList<Animal>();
 		boolean oneMore = true;
 		int cont = 0;
@@ -133,7 +135,12 @@ public class Opcoes {
 			
 			System.out.println("Insira o gênero do seu pet('F'/'M'): ");
 	        String Sgenre = scanner.nextLine();
-	        char genre = Sgenre.charAt(0);
+	        char genre = ' ';
+	        while(Sgenre.isEmpty()) {
+	        	System.out.println("Digite uma opção válida");
+	        	Sgenre = scanner.nextLine();
+	        }
+	        genre = Sgenre.charAt(0);
 	        while((genre!='F') && (genre!='M')) {
 	        	System.out.println("Digite uma opção válida");
 	        	Sgenre = scanner.nextLine();
@@ -145,7 +152,7 @@ public class Opcoes {
 			
 			animais.add(_animal);
 			totalAnimais.add(_animal);
-			System.out.println("Deseja cadastrar mais um pet ? SIM(1) / NÃO(2) : ");
+			System.out.println("Deseja cadastrar mais um pet? SIM(1) / NÃO(2) : ");
 			String val = scanner.nextLine();
 			oneMore = (val.equals("1")) ? true : false;
 			cont++;
@@ -156,92 +163,96 @@ public class Opcoes {
 		c.setIdClient(idC);
 		idC++;
 		clientes.add(c);
-		System.out.println("Cliente e seus pets adicionado *-* !");
+		System.out.println("Cliente e seus pets cadastrados com sucesso!\n");
 		
 	}
 	
 	//Cadastro de atendimento
 	public void createAtendimento() {
-		Profissional pr = null;
-		Cliente cl = null;
-		Animal an = null;
-		
-		for (Profissional p : profissionais) {
-			System.out.println("["+p.getIdProfissional()+"]"+p.getNome());
-		}
-		System.out.println("Selecione o profissional pelo seu ID:");
-		int idPr = Integer.parseInt(scanner.nextLine());
-
-		for (Profissional p : profissionais) {
-			if(p.getIdProfissional() == idPr) {
-				pr = p;
-				break;
-			}
-		}	
-		
-		for (Cliente c : clientes) {
-			System.out.println("["+c.getIdClient()+"]"+c.getNome());
+		if(!clientes.isEmpty()&&!profissionais.isEmpty()) {
+			Profissional pr = null;
+			Cliente cl = null;
+			Animal an = null;
 			
-		}
-		
-		System.out.println("Selecione o cliente pelo seu ID:");
-		int idCl = Integer.parseInt(scanner.nextLine());
-		
-		for (Cliente c : clientes) {
-			if(c.getIdClient() == idCl) {
-				cl = c;
-				break;
+			for (Profissional p : profissionais) {
+				System.out.println("["+p.getIdProfissional()+"]"+p.getNome());
 			}
-		}
-		
-		for (Animal a : cl.getAnimal()) {
-			System.out.println("["+a.getIdPet()+"]"+a.getNome());
-		}
-		
-		System.out.println("Selecione o pet do cliente pelo seu ID:");
-		int idA = Integer.parseInt(scanner.nextLine());
-		
-		for (Animal a : cl.getAnimal()) {
-			if(a.getIdPet() == idA) {
-				an = a;
-				break;
+			System.out.println("Selecione o profissional pelo seu ID:");
+			int idPr = Integer.parseInt(scanner.nextLine());
+	
+			for (Profissional p : profissionais) {
+				if(p.getIdProfissional() == idPr) {
+					pr = p;
+					break;
+				}
+			}	
+			
+			for (Cliente c : clientes) {
+				System.out.println("["+c.getIdClient()+"]"+c.getNome());
+				
 			}
-		}
-		
-		System.out.println("Insira a data do agendamento(dd/mm/aaaa):");
-		String date = scanner.nextLine();
-		
-		Atendimento _atendimento = new Atendimento(cl, pr, an, date);
-		atendimentos.add(_atendimento);		
-		System.out.println("Atendimento marcado para a(o) " + an.getNome()+ " !");
-		
-		
+			
+			System.out.println("Selecione o cliente pelo seu ID:");
+			int idCl = Integer.parseInt(scanner.nextLine());
+			
+			for (Cliente c : clientes) {
+				if(c.getIdClient() == idCl) {
+					cl = c;
+					break;
+				}
+			}
+			
+			for (Animal a : cl.getAnimal()) {
+				System.out.println("["+a.getIdPet()+"]"+a.getNome());
+			}
+			
+			System.out.println("Selecione o pet do cliente pelo seu ID:");
+			int idA = Integer.parseInt(scanner.nextLine());
+			
+			for (Animal a : cl.getAnimal()) {
+				if(a.getIdPet() == idA) {
+					an = a;
+					break;
+				}
+			}
+			
+			System.out.println("Insira a data do agendamento(dd/mm/aaaa):");
+			String date = scanner.nextLine();
+			
+			Atendimento _atendimento = new Atendimento(cl, pr, an, date);
+			atendimentos.add(_atendimento);		
+			System.out.println("Atendimento marcado para " + an.getNome()+ " no dia " + f.format(_atendimento.getDate())+"\n");
+		}else
+			System.out.println("Cliente ou Profissional ainda não cadastrado!\n");
 	}
 	
 	//Relatório de histórico de atendimento
 	public void historicoAtendimento() {
-		for (Profissional p : profissionais) {
-			System.out.println("["+p.getIdProfissional()+"]"+p.getNome());
-		}
-		System.out.println("Selecione o profissional pelo seu ID:");
-		int idPr = Integer.parseInt(scanner.nextLine());
-		for (Atendimento atendimento : atendimentos) {
-			if(atendimento.getProfissional().getIdProfissional() == idPr) {
-				System.out.println("Dia do atendimento:" + f.format(atendimento.getDate()));
-				System.out.println("Nome do Profissional: "+ atendimento.getProfissional().getNome());
-				System.out.println("CPF do Profissional:" + atendimento.getProfissional().getCPF());
-				System.out.println("Nome do Cliente: "+ atendimento.getCliente().getNome());
-				System.out.println("CPF do Cliente:" + atendimento.getCliente().getCPF());
-				System.out.println("Nome do Pet:" + atendimento.getAnimal().getNome());
-				System.out.println("---------------------------------------");
+		if(!atendimentos.isEmpty()) {
+			for (Profissional p : profissionais) {
+				System.out.println("["+p.getIdProfissional()+"]"+p.getNome());
 			}
-		}
+			System.out.println("Selecione o profissional pelo seu ID:");
+			int idPr = Integer.parseInt(scanner.nextLine());
+			System.out.println("LISTA DE ATENDIMENTOS \n");
+			for (Atendimento atendimento : atendimentos) {
+				if(atendimento.getProfissional().getIdProfissional() == idPr) {
+					System.out.println("Dia do atendimento:" + f.format(atendimento.getDate()));
+					System.out.println("CPF do Profissional:" + atendimento.getProfissional().getCPF());
+					System.out.println("Nome do Cliente: "+ atendimento.getCliente().getNome());
+					System.out.println("CPF do Cliente:" + atendimento.getCliente().getCPF());
+					System.out.println("Nome do Pet:" + atendimento.getAnimal().getNome());
+					System.out.println("---------------------------------------\n");
+				}
+			}
+		}else
+			System.out.println("Nenhum atendimento registrado!\n");
 	}
 	
 	//Relatório de racking de raças
 	public void ranckingRaca() {
+		System.out.println("RANCKING DE RAÇAS");
 		Map<String, Integer> racas = new HashMap<>();
-		System.out.println(totalAnimais.size());
 		for (Animal a : totalAnimais) {
 			 Integer j = racas.get(a.getRaça()); 
 			 racas.put(a.getRaça(), (j == null) ? 1 : j + 1); 
@@ -256,6 +267,7 @@ public class Opcoes {
 		                    LinkedHashMap::new));
 		
 		 int k = 1;
+		 
 		 for (Map.Entry<String,Integer> pair : orded.entrySet()) {
 			 if(k<11)
 				 System.out.println(k+"°- "+pair.getKey()+": "+pair.getValue());
@@ -276,10 +288,6 @@ public class Opcoes {
 				masc++;
 			}
 		}
-		
-		System.out.println("Animais do gênero feminino:" + fem);
-		System.out.println("Animais do gênero masculino:" + masc);
-		
 		if(fem>masc) {
 			System.out.println("O gênero preferido é o feminino");
 		}else if(masc>fem) {
@@ -287,6 +295,9 @@ public class Opcoes {
 		}else if(masc == fem){
 			System.out.println("Não há preferência de gênero");
 		}
+		
+		System.out.println("Animais do gênero feminino:" + fem);
+		System.out.println("Animais do gênero masculino:" + masc + "\n");
 		
 	}
 }
